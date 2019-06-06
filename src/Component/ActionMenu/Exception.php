@@ -6,7 +6,7 @@
  * Time: 14:54
  */
 
-namespace Aplab\AplabAdminBundle\Component\ActionMenu;
+namespace App\Component\ActionMenu;
 
 
 class Exception extends \Exception

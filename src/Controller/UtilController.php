@@ -6,15 +6,15 @@
  * Time: 22:44
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Util\CssWidthDefinition;
+use App\Util\CssWidthDefinition;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 /**
  * Class UtilController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  */
 class UtilController extends Controller
 {

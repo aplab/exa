@@ -6,7 +6,7 @@
  * Time: 17:12
  */
 
-namespace Aplab\AplabAdminBundle\Util;
+namespace App\Util;
 
 
 class UiDataTransmitter

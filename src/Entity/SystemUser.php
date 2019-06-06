@@ -6,18 +6,18 @@
  * Time: 22:27
  */
 
-namespace Aplab\AplabAdminBundle\Entity;
+namespace App\Entity;
 
 
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
+use App\Component\ModuleMetadata as ModuleMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class SystemUser
- * @package Aplab\AplabAdminBundle\Entity
+ * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="system_user")
  * @UniqueEntity(fields={"username"}, message="It looks like your already have an account!")

@@ -6,12 +6,12 @@
  * Time: 12:03
  */
 
-namespace Aplab\AplabAdminBundle\Component\Helper;
+namespace App\Component\Helper;
 
 
-use Aplab\AplabAdminBundle\Component\ActionMenu\ActionMenuManager;
-use Aplab\AplabAdminBundle\Component\Menu\MenuManager;
-use Aplab\AplabAdminBundle\Component\Toolbar\ToolbarManager;
+use App\Component\ActionMenu\ActionMenuManager;
+use App\Component\Menu\MenuManager;
+use App\Component\Toolbar\ToolbarManager;
 use Doctrine\Common\Annotations\Reader;
 use Symfony\Component\HttpFoundation\RequestStack;
 
@@ -89,8 +89,8 @@ class AdminControllerHelper
 
     /**
      * @param null $id
-     * @return \Aplab\AplabAdminBundle\Component\Menu\Menu
-     * @throws \Aplab\AplabAdminBundle\Component\Menu\Exception
+     * @return \App\Component\Menu\Menu
+     * @throws \App\Component\Menu\Exception
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function getMenu($id = null)
@@ -103,8 +103,8 @@ class AdminControllerHelper
 
     /**
      * @param null $id
-     * @return \Aplab\AplabAdminBundle\Component\Toolbar\Toolbar
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @return \App\Component\Toolbar\Toolbar
+     * @throws \App\Component\Toolbar\Exception
      */
     public function getToolbar($id = null)
     {
@@ -116,8 +116,8 @@ class AdminControllerHelper
 
     /**
      * @param null $id
-     * @return \Aplab\AplabAdminBundle\Component\ActionMenu\ActionMenu
-     * @throws \Aplab\AplabAdminBundle\Component\ActionMenu\Exception
+     * @return \App\Component\ActionMenu\ActionMenu
+     * @throws \App\Component\ActionMenu\Exception
      */
     public function getActionMenu($id = null)
     {

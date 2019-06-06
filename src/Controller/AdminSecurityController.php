@@ -6,10 +6,10 @@
  * Time: 22:54
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Form\LoginForm;
+use App\Form\LoginForm;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Routing\Annotation\Route;
 

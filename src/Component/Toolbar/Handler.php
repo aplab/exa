@@ -6,7 +6,7 @@
  * Time: 14:50
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 
 class Handler extends Action

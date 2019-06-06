@@ -6,7 +6,7 @@
  * Time: 10:52
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType;
+namespace App\Component\DataTableRepresentation\CellType;
 
 
 class CellTypeEditId extends CellTypeAbstract

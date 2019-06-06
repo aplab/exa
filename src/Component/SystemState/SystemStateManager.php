@@ -6,10 +6,10 @@
  * Time: 8:59
  */
 
-namespace Aplab\AplabAdminBundle\Component\SystemState;
+namespace App\Component\SystemState;
 
 
-use Aplab\AplabAdminBundle\Util\Path;
+use App\Util\Path;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Filesystem\Filesystem;
 

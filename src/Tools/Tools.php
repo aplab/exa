@@ -6,11 +6,11 @@
  * Time: 16:44
  */
 
-namespace Aplab\AplabAdminBundle\Tools;
+namespace App\Tools;
 
 /**
  * Class Tools
- * @package Aplab\AplabAdminBundle\Tools
+ * @package App\Tools
  */
 class Tools
 {

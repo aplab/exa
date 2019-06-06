@@ -6,18 +6,18 @@
  * Time: 14:58
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Entity\AdjacencyList\ListItem;
-use Aplab\AplabAdminBundle\Entity\HistoryUploadImage;
-use Aplab\AplabAdminBundle\Repository\AdjacencyListItemRepository;
+use App\Entity\AdjacencyList\ListItem;
+use App\Entity\HistoryUploadImage;
+use App\Repository\AdjacencyListItemRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class ExampleController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin", name="admin_")
  */
 class ExampleController extends AbstractController

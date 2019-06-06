@@ -6,17 +6,17 @@
  * Time: 16:03
  */
 
-namespace Aplab\AplabAdminBundle\Entity\UserFiles;
+namespace App\Entity\UserFiles;
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
-use Aplab\AplabAdminBundle\Util\Path;
+use App\Component\ModuleMetadata as ModuleMetadata;
+use App\Util\Path;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class File
- * @package Aplab\AplabAdminBundle\Entity\Userfiles
- * @ORM\Entity(repositoryClass="Aplab\AplabAdminBundle\Repository\UserFilesRepository")
+ * @package App\Entity\Userfiles
+ * @ORM\Entity(repositoryClass="App\Repository\UserFilesRepository")
  * @ORM\Table(name="user_files")
  * @ModuleMetadata\Module(
  *     title="User files",

@@ -6,7 +6,7 @@
  * Time: 14:54
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 
 class Exception extends \Exception

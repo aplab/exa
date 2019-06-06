@@ -6,11 +6,11 @@
  * Time: 15:20
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 /**
  * Class Toolbar
- * @package Aplab\AplabAdminBundle\Component\Toolbar
+ * @package App\Component\Toolbar
  */
 class Toolbar implements \JsonSerializable
 {

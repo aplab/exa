@@ -6,11 +6,11 @@
  * Time: 14:48
  */
 
-namespace Aplab\AplabAdminBundle\Security;
+namespace App\Security;
 
 
-use Aplab\AplabAdminBundle\Entity\SystemUser;
-use Aplab\AplabAdminBundle\Form\LoginForm;
+use App\Entity\SystemUser;
+use App\Form\LoginForm;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\FormFactoryInterface;

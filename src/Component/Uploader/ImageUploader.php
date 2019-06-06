@@ -6,11 +6,11 @@
  * Time: 14:48
  */
 
-namespace Aplab\AplabAdminBundle\Component\Uploader;
+namespace App\Component\Uploader;
 
 
-use Aplab\AplabAdminBundle\Component\FileStorage\LocalStorage;
-use Aplab\AplabAdminBundle\Entity\HistoryUploadImage;
+use App\Component\FileStorage\LocalStorage;
+use App\Entity\HistoryUploadImage;
 use Doctrine\ORM\EntityManagerInterface;
 
 class ImageUploader

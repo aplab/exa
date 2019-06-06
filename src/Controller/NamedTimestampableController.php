@@ -6,15 +6,15 @@
  * Time: 17:56
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Entity\NamedTimestampable;
+use App\Entity\NamedTimestampable;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class NamedTimestampableController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin/named-timestampable", name="admin_named_timestampable_")
  */
 class NamedTimestampableController extends ReferenceAdminController

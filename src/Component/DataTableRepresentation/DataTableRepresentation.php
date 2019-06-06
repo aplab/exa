@@ -6,12 +6,12 @@
  * Time: 10:42
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation;
+namespace App\Component\DataTableRepresentation;
 
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository;
-use Aplab\AplabAdminBundle\Component\SystemState\SystemStateManager;
-use Aplab\AplabAdminBundle\Util\CssWidthDefinition;
+use App\Component\ModuleMetadata\ModuleMetadataRepository;
+use App\Component\SystemState\SystemStateManager;
+use App\Util\CssWidthDefinition;
 use Doctrine\ORM\EntityManagerInterface;
 
 class DataTableRepresentation

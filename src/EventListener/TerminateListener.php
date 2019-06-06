@@ -6,12 +6,12 @@
  * Time: 10:58
  */
 
-namespace Aplab\AplabAdminBundle\EventListener;
+namespace App\EventListener;
 
 
 
 
-use Aplab\AplabAdminBundle\Component\SystemState\SystemStateManager;
+use App\Component\SystemState\SystemStateManager;
 use Psr\Log\LoggerInterface;
 
 class TerminateListener

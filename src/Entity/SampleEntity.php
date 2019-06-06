@@ -6,13 +6,13 @@
  * Time: 16:01
  */
 
-namespace Aplab\AplabAdminBundle\Entity;
+namespace App\Entity;
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
+use App\Component\ModuleMetadata as ModuleMetadata;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="Aplab\AplabAdminBundle\Repository\SampleEntityRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\SampleEntityRepository")
  * @ORM\Table(name="my_sample_entity")
  * @ModuleMetadata\Module(
  *     title="Test entity title",

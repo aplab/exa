@@ -6,7 +6,7 @@
  * Time: 11:26
  */
 
-namespace Aplab\AplabAdminBundle\Form;
+namespace App\Form;
 
 
 class TaskType extends AbstractType

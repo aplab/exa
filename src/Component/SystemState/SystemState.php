@@ -6,10 +6,10 @@
  * Time: 9:00
  */
 
-namespace Aplab\AplabAdminBundle\Component\SystemState;
+namespace App\Component\SystemState;
 
 
-use Aplab\AplabAdminBundle\Util\Path;
+use App\Util\Path;
 
 class SystemState
 {

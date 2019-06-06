@@ -6,17 +6,17 @@
  * Time: 15:00
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Component\Helper\AdminControllerHelper;
+use App\Component\Helper\AdminControllerHelper;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 
 /**
  * Class BaseAdminController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  */
 abstract class BaseAdminController extends AbstractController
 {

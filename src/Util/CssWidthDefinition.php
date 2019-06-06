@@ -6,7 +6,7 @@
  * Time: 22:39
  */
 
-namespace Aplab\AplabAdminBundle\Util;
+namespace App\Util;
 
 
 class CssWidthDefinition

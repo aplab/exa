@@ -6,11 +6,11 @@
  * Time: 14:54
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 /**
  * Class Icon
- * @package Aplab\AplabAdminBundle\Component\Menu
+ * @package App\Component\Menu
  */
 class Icon
 {

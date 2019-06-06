@@ -6,13 +6,13 @@
  * Time: 23:47
  */
 
-namespace Aplab\AplabAdminBundle\Component\InstanceEditor\FieldType;
+namespace App\Component\InstanceEditor\FieldType;
 
-use Aplab\AplabAdminBundle\Component\InstanceEditor\InstanceEditorField;
+use App\Component\InstanceEditor\InstanceEditorField;
 
 /**
  * Class FieldTypeFactory
- * @package Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType
+ * @package App\Component\DataTableRepresentation\CellType
  */
 class FieldTypeFactory
 {

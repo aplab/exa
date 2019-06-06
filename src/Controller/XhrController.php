@@ -6,13 +6,13 @@
  * Time: 14:25
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Component\FileStorage\LocalStorage;
-use Aplab\AplabAdminBundle\Component\Uploader\FileUploader;
-use Aplab\AplabAdminBundle\Component\Uploader\ImageUploader;
-use Aplab\AplabAdminBundle\Entity\HistoryUploadImage;
+use App\Component\FileStorage\LocalStorage;
+use App\Component\Uploader\FileUploader;
+use App\Component\Uploader\ImageUploader;
+use App\Entity\HistoryUploadImage;
 use Respect\Validation\Validator;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -21,7 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class FileController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin/xhr", name="admin_xhr_")
  */
 class XhrController extends Controller

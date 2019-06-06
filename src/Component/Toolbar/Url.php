@@ -6,7 +6,7 @@
  * Time: 14:52
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 
 class Url extends Action

@@ -6,15 +6,15 @@
  * Time: 17:56
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Entity\FieldsExample;
+use App\Entity\FieldsExample;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class FieldsExampleController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin/fields-example", name="admin_fields_example_")
  */
 class FieldsExampleController extends ReferenceAdminController

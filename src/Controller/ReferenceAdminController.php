@@ -6,11 +6,11 @@
  * Time: 17:56
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableRepresentation;
-use Aplab\AplabAdminBundle\Component\InstanceEditor\InstatceEditorManager;
+use App\Component\DataTableRepresentation\DataTableRepresentation;
+use App\Component\InstanceEditor\InstatceEditorManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +18,7 @@ use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Class ReferenceAdminController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  */
 abstract class ReferenceAdminController extends BaseAdminController
 {
@@ -28,7 +28,7 @@ abstract class ReferenceAdminController extends BaseAdminController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Psr\SimpleCache\InvalidArgumentException
      * @throws \ReflectionException
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @throws \App\Component\Toolbar\Exception
      */
     public function listItems(DataTableRepresentation $data_table_representation)
     {
@@ -129,7 +129,7 @@ abstract class ReferenceAdminController extends BaseAdminController
      * @Route("/add", name="add", methods={"GET"})
      * @param InstatceEditorManager $instatceEditorManager
      * @return Response
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @throws \App\Component\Toolbar\Exception
      * @throws \Psr\SimpleCache\InvalidArgumentException
      * @throws \ReflectionException
      */
@@ -181,7 +181,7 @@ abstract class ReferenceAdminController extends BaseAdminController
      * @param $id
      * @param InstatceEditorManager $instance_editor_manager
      * @return Response
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @throws \App\Component\Toolbar\Exception
      * @throws \Psr\SimpleCache\InvalidArgumentException
      * @throws \ReflectionException
      */

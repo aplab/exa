@@ -6,17 +6,17 @@
  * Time: 16:44
  */
 
-namespace Aplab\AplabAdminBundle\Entity\Bind;
+namespace App\Entity\Bind;
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
+use App\Component\ModuleMetadata as ModuleMetadata;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Container
- * @package Aplab\AplabAdminBundle\Entity\Bind
- * @ORM\Entity(repositoryClass="Aplab\AplabAdminBundle\Repository\BindContainerRepository")
+ * @package App\Entity\Bind
+ * @ORM\Entity(repositoryClass="App\Repository\BindContainerRepository")
  * @ORM\Table(name="bind_container")
  * @ModuleMetadata\Module(
  *     title="Container",
@@ -84,7 +84,7 @@ class Container
     }
 
     /**
-     * @ORM\OneToMany(targetEntity="\Aplab\AplabAdminBundle\Entity\Bind\Contained", mappedBy="container")
+     * @ORM\OneToMany(targetEntity="\App\Entity\Bind\Contained", mappedBy="container")
      */
     private $contained;
 

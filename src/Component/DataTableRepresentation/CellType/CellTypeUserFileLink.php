@@ -6,10 +6,10 @@
  * Time: 23:12
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType;
+namespace App\Component\DataTableRepresentation\CellType;
 
 
-use Aplab\AplabAdminBundle\Util\Path;
+use App\Util\Path;
 
 class CellTypeUserFileLink extends CellTypeAbstract
 {

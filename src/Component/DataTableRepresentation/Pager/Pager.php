@@ -6,7 +6,7 @@
  * Time: 16:30
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation\Pager;
+namespace App\Component\DataTableRepresentation\Pager;
 
 use Respect\Validation\Validator;
 

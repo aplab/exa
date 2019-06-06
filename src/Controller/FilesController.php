@@ -6,18 +6,18 @@
  * Time: 0:20
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Entity\UserFiles\File;
-use Aplab\AplabAdminBundle\Util\Path;
+use App\Entity\UserFiles\File;
+use App\Util\Path;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class FilesController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  */
 class FilesController extends Controller
 {

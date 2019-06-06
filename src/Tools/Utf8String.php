@@ -14,7 +14,7 @@
  * @package Capsule
  */
 
-namespace Aplab\AplabAdminBundle\Tools;
+namespace App\Tools;
 
 /**
  * Utf8String.php

@@ -1,20 +1,20 @@
 <?php
 
-namespace Aplab\AplabAdminBundle\Entity\AdjacencyList;
+namespace App\Entity\AdjacencyList;
 
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
+use App\Component\ModuleMetadata as ModuleMetadata;
 
 use Gedmo\Mapping\Annotation as Gedmo;
 
 
 /**
  * Class ListItem
- * @package Aplab\AplabAdminBundle\Entity\AdjacencyList
- * @ORM\Entity(repositoryClass="Aplab\AplabAdminBundle\Repository\AdjacencyListItemRepository")
+ * @package App\Entity\AdjacencyList
+ * @ORM\Entity(repositoryClass="App\Repository\AdjacencyListItemRepository")
  * @ORM\Table(name="adjacency_list", indexes={
  *      @ORM\Index(name="parent_id", columns={"parent_id"}),
  *      @ORM\Index(name="sort_order", columns={"sort_order"}),
@@ -42,20 +42,20 @@ class ListItem
     private $id;
 
     /**
-     * @ORM\OneToMany(targetEntity="\Aplab\AplabAdminBundle\Entity\AdjacencyList\ListItem", mappedBy="parent")
+     * @ORM\OneToMany(targetEntity="\App\Entity\AdjacencyList\ListItem", mappedBy="parent")
      * @ORM\OrderBy({"sortOrder" = "ASC", "id" = "ASC"})
      */
     private $children;
 
     /**
      * Many Categories have One Category.
-     * @ORM\ManyToOne(targetEntity="\Aplab\AplabAdminBundle\Entity\AdjacencyList\ListItem", inversedBy="children")
+     * @ORM\ManyToOne(targetEntity="\App\Entity\AdjacencyList\ListItem", inversedBy="children")
      * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
      * @ModuleMetadata\Property(title="Parent",
      *     cell={@ModuleMetadata\Cell(order=3000, width=320, type="Entity",
      *     options=@ModuleMetadata\Options(accessor="getName"))},
      *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Entity",
-     *     options=@ModuleMetadata\Options(data_class="\Aplab\AplabAdminBundle\Entity\AdjacencyList\ListItem"))})
+     *     options=@ModuleMetadata\Options(data_class="\App\Entity\AdjacencyList\ListItem"))})
      */
     private $parent;
 

@@ -6,10 +6,10 @@
  * Time: 20:42
  */
 
-namespace Aplab\AplabAdminBundle\Component\InstanceEditor;
+namespace App\Component\InstanceEditor;
 
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository;
+use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 class InstatceEditorManager

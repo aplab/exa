@@ -6,7 +6,7 @@
  * Time: 11:53
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation;
+namespace App\Component\DataTableRepresentation;
 
 
 class DataTableTreeMod extends DataTable

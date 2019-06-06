@@ -6,7 +6,7 @@
  * Time: 13:48
  */
 
-namespace Aplab\AplabAdminBundle\Component\Menu;
+namespace App\Component\Menu;
 
 
 class Menu implements \JsonSerializable

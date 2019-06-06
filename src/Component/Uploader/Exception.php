@@ -6,7 +6,7 @@
  * Time: 15:12
  */
 
-namespace Aplab\AplabAdminBundle\Component\Uploader;
+namespace App\Component\Uploader;
 
 
 class Exception extends \Exception

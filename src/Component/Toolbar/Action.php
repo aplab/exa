@@ -6,11 +6,11 @@
  * Time: 14:50
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 /**
  * Class Action
- * @package Aplab\AplabAdminBundle\Component\Toolbar
+ * @package App\Component\Toolbar
  */
 abstract class Action
 {

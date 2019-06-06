@@ -6,7 +6,7 @@
  * Time: 14:52
  */
 
-namespace Aplab\AplabAdminBundle\Component\Menu;
+namespace App\Component\Menu;
 
 
 class Url extends Action

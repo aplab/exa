@@ -6,7 +6,7 @@
  * Time: 13:36
  */
 
-namespace Aplab\AplabAdminBundle\Component\FileStorage;
+namespace App\Component\FileStorage;
 
 
 class Exception extends \Exception

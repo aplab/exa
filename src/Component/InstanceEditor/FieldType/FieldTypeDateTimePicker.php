@@ -6,7 +6,7 @@
  * Time: 10:59
  */
 
-namespace Aplab\AplabAdminBundle\Component\InstanceEditor\FieldType;
+namespace App\Component\InstanceEditor\FieldType;
 
 
 class FieldTypeDateTimePicker extends FieldTypeAbstract

@@ -6,7 +6,7 @@
  * Time: 14:50
  */
 
-namespace Aplab\AplabAdminBundle\Component\Menu;
+namespace App\Component\Menu;
 
 
 class Handler extends Action

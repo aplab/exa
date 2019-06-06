@@ -6,10 +6,10 @@
  * Time: 10:49
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType;
+namespace App\Component\DataTableRepresentation\CellType;
 
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableCell;
+use App\Component\DataTableRepresentation\DataTableCell;
 
 abstract class CellTypeAbstract implements CellTypeInterface
 {

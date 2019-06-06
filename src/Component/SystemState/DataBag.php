@@ -6,7 +6,7 @@
  * Time: 9:00
  */
 
-namespace Aplab\AplabAdminBundle\Component\SystemState;
+namespace App\Component\SystemState;
 
 
 class DataBag

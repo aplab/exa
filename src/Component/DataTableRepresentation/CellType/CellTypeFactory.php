@@ -6,13 +6,13 @@
  * Time: 23:47
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType;
+namespace App\Component\DataTableRepresentation\CellType;
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableCell;
+use App\Component\DataTableRepresentation\DataTableCell;
 
 /**
  * Class CellTypeFactory
- * @package Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType
+ * @package App\Component\DataTableRepresentation\CellType
  */
 class CellTypeFactory
 {

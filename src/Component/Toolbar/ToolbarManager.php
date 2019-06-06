@@ -6,13 +6,13 @@
  * Time: 15:19
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Class ToolbarManager
- * @package Aplab\AplabAdminBundle\Component\Toolbar
+ * @package App\Component\Toolbar
  */
 class ToolbarManager
 {

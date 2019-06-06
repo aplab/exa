@@ -6,14 +6,14 @@
  * Time: 10:57
  */
 
-namespace Aplab\AplabAdminBundle\Component\InstanceEditor;
+namespace App\Component\InstanceEditor;
 
 
-use Aplab\AplabAdminBundle\Component\InstanceEditor\FieldType\FieldTypeFactory;
-use Aplab\AplabAdminBundle\Component\InstanceEditor\FieldType\FieldTypeInterface;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\Options;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\Property;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\Widget;
+use App\Component\InstanceEditor\FieldType\FieldTypeFactory;
+use App\Component\InstanceEditor\FieldType\FieldTypeInterface;
+use App\Component\ModuleMetadata\Options;
+use App\Component\ModuleMetadata\Property;
+use App\Component\ModuleMetadata\Widget;
 
 class InstanceEditorField
 {

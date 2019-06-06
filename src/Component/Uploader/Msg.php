@@ -16,11 +16,11 @@
  * @package Capsule
  */
 
-namespace Aplab\AplabAdminBundle\Component\Uploader;
+namespace App\Component\Uploader;
 
 /**
  * Class Msg
- * @package Aplab\AplabAdminBundle\Component\Uploader
+ * @package App\Component\Uploader
  */
 class Msg
 {

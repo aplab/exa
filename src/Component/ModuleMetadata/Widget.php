@@ -6,7 +6,7 @@
  * Time: 20:39
  */
 
-namespace Aplab\AplabAdminBundle\Component\ModuleMetadata;
+namespace App\Component\ModuleMetadata;
 
 
 use Doctrine\Common\Annotations\Annotation\Attribute;
@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping\Annotation;
 
 /**
  * Class Vidget
- * @package Aplab\AplabAdminBundle\Annotation\Module
+ * @package App\Annotation\Module
  * @Annotation
  * @Target({"ANNOTATION"})
  * @Attributes({
@@ -27,7 +27,7 @@ use Doctrine\ORM\Mapping\Annotation;
  *      @Attribute("title", type="string", required=false),
  *      @Attribute("help", type="string", required=false),
  *      @Attribute("comment", type="string", required=false),
- *      @Attribute("options", type="Aplab\AplabAdminBundle\Component\ModuleMetadata\Options", required=false),
+ *      @Attribute("options", type="App\Component\ModuleMetadata\Options", required=false),
  *     })
  */
 class Widget implements Annotation

@@ -6,14 +6,14 @@
  * Time: 10:31
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class AdminController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin", name="admin_")
  */
 class AdminController extends AbstractController

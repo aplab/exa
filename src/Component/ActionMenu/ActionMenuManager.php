@@ -6,13 +6,13 @@
  * Time: 15:19
  */
 
-namespace Aplab\AplabAdminBundle\Component\ActionMenu;
+namespace App\Component\ActionMenu;
 
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Class ActionMenuManager
- * @package Aplab\AplabAdminBundle\Component\ActionMenu
+ * @package App\Component\ActionMenu
  */
 class ActionMenuManager
 {

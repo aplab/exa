@@ -6,15 +6,15 @@
  * Time: 17:56
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Entity\Bind\Container;
+use App\Entity\Bind\Container;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class NamedTimestampableController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin/bind-container", name="admin_bind_container_")
  */
 class BindContainerController extends ReferenceAdminController

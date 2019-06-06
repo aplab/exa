@@ -6,11 +6,11 @@
  * Time: 10:57
  */
 
-namespace Aplab\AplabAdminBundle\Component\InstanceEditor;
+namespace App\Component\InstanceEditor;
 
 
-use Aplab\AplabAdminBundle\Component\InstanceEditor\FieldType\FieldTypeFactory;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository;
+use App\Component\InstanceEditor\FieldType\FieldTypeFactory;
+use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -37,7 +37,7 @@ class InstanceEditor
     protected $entityManagerInterface;
 
     /**
-     * @var \Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadata
+     * @var \App\Component\ModuleMetadata\ModuleMetadata
      */
     protected $moduleMetadata;
 
@@ -205,9 +205,9 @@ class InstanceEditor
     }
 
     /**
-     * @return \Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadata
+     * @return \App\Component\ModuleMetadata\ModuleMetadata
      */
-    public function getModuleMetadata(): \Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadata
+    public function getModuleMetadata(): \App\Component\ModuleMetadata\ModuleMetadata
     {
         return $this->moduleMetadata;
     }

@@ -6,13 +6,13 @@
  * Time: 15:57
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation;
+namespace App\Component\DataTableRepresentation;
 
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType\CellTypeFactory;
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\Pager\Pager;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadata;
-use Aplab\AplabAdminBundle\Util\CssWidthDefinition;
+use App\Component\DataTableRepresentation\CellType\CellTypeFactory;
+use App\Component\DataTableRepresentation\Pager\Pager;
+use App\Component\ModuleMetadata\ModuleMetadata;
+use App\Util\CssWidthDefinition;
 use Doctrine\ORM\EntityManagerInterface;
 
 class DataTable
@@ -48,7 +48,7 @@ class DataTable
     protected $cssWidthDefinition;
 
     /**
-     * @var \Aplab\AplabAdminBundle\Component\SystemState\SystemState
+     * @var \App\Component\SystemState\SystemState
      */
     protected $systemState;
 
@@ -232,9 +232,9 @@ class DataTable
     }
 
     /**
-     * @return \Aplab\AplabAdminBundle\Component\SystemState\SystemState
+     * @return \App\Component\SystemState\SystemState
      */
-    public function getSystemState(): \Aplab\AplabAdminBundle\Component\SystemState\SystemState
+    public function getSystemState(): \App\Component\SystemState\SystemState
     {
         return $this->systemState;
     }

@@ -6,12 +6,12 @@
  * Time: 9:46
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Component\ActionMenu\ActionMenuManager;
-use Aplab\AplabAdminBundle\Component\Menu\MenuManager;
-use Aplab\AplabAdminBundle\Component\Toolbar\ToolbarManager;
+use App\Component\ActionMenu\ActionMenuManager;
+use App\Component\Menu\MenuManager;
+use App\Component\Toolbar\ToolbarManager;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class MenuController extends AbstractController
@@ -19,7 +19,7 @@ class MenuController extends AbstractController
     /**
      * @param MenuManager $manager
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Aplab\AplabAdminBundle\Component\Menu\Exception
+     * @throws \App\Component\Menu\Exception
      * @throws \Psr\SimpleCache\InvalidArgumentException
      */
     public function mainMenu(MenuManager $manager)
@@ -35,7 +35,7 @@ class MenuController extends AbstractController
     /**
      * @param ActionMenuManager $manager
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Aplab\AplabAdminBundle\Component\ActionMenu\Exception
+     * @throws \App\Component\ActionMenu\Exception
      */
     public function actionMenu(ActionMenuManager $manager)
     {
@@ -50,7 +50,7 @@ class MenuController extends AbstractController
     /**
      * @param ToolbarManager $manager
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @throws \App\Component\Toolbar\Exception
      */
     public function toolbar(ToolbarManager $manager)
     {

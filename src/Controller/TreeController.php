@@ -6,18 +6,18 @@
  * Time: 17:56
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableRepresentation;
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableRepresentationTreeMod;
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableTreeMod;
-use Aplab\AplabAdminBundle\Entity\AdjacencyList\ListItem;
+use App\Component\DataTableRepresentation\DataTableRepresentation;
+use App\Component\DataTableRepresentation\DataTableRepresentationTreeMod;
+use App\Component\DataTableRepresentation\DataTableTreeMod;
+use App\Entity\AdjacencyList\ListItem;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class NamedTimestampableController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin/tree", name="admin_tree_")
  */
 class TreeController extends ReferenceAdminController
@@ -31,7 +31,7 @@ class TreeController extends ReferenceAdminController
      * @Route("/", name="list", methods="GET")
      * @param DataTableRepresentation $data_table_representation
      * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @throws \App\Component\Toolbar\Exception
      * @throws \Psr\SimpleCache\InvalidArgumentException
      * @throws \ReflectionException
      */

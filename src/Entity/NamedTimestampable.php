@@ -6,16 +6,16 @@
  * Time: 16:01
  */
 
-namespace Aplab\AplabAdminBundle\Entity;
+namespace App\Entity;
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
+use App\Component\ModuleMetadata as ModuleMetadata;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Class NamedTimestampable
- * @package Aplab\AplabAdminBundle\Entity
- * @ORM\Entity(repositoryClass="Aplab\AplabAdminBundle\Repository\NamedTimestampableRepository")
+ * @package App\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\NamedTimestampableRepository")
  * @ORM\Table(name="named_timestampable")
  * @ModuleMetadata\Module(
  *     title="Named timestampable",

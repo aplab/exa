@@ -6,7 +6,7 @@
  * Time: 20:39
  */
 
-namespace Aplab\AplabAdminBundle\Component\ModuleMetadata;
+namespace App\Component\ModuleMetadata;
 
 
 use Doctrine\Common\Annotations\Annotation\Attribute;
@@ -16,7 +16,7 @@ use Doctrine\ORM\Mapping\Annotation;
 
 /**
  * Class Property
- * @package Aplab\AplabAdminBundle\Annotation\Module
+ * @package App\Annotation\Module
  * @Annotation
  * @Target({"PROPERTY"})
  * @Attributes({
@@ -25,8 +25,8 @@ use Doctrine\ORM\Mapping\Annotation;
  *   @Attribute("help", type = "string", required=false),
  *   @Attribute("comment", type = "string", required=false),
  *   @Attribute("label", type = "string", required=false),
- *   @Attribute("cell", type = "array<Aplab\AplabAdminBundle\Component\ModuleMetadata\Cell>", required=true),
- *   @Attribute("widget", type = "array<Aplab\AplabAdminBundle\Component\ModuleMetadata\Widget>", required=true),
+ *   @Attribute("cell", type = "array<App\Component\ModuleMetadata\Cell>", required=true),
+ *   @Attribute("widget", type = "array<App\Component\ModuleMetadata\Widget>", required=true),
  *   @Attribute("readonly", type = "boolean")
  * })
  */

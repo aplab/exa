@@ -6,14 +6,14 @@
  * Time: 16:44
  */
 
-namespace Aplab\AplabAdminBundle\Entity\Bind;
+namespace App\Entity\Bind;
 
-use Aplab\AplabAdminBundle\Component\ModuleMetadata as ModuleMetadata;
+use App\Component\ModuleMetadata as ModuleMetadata;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class Contained
- * @package Aplab\AplabAdminBundle\Entity\Bind
+ * @package App\Entity\Bind
  * @ORM\Entity()
  * @ORM\Table(name="bind_contained")
  * @ModuleMetadata\Module(
@@ -82,13 +82,13 @@ class Contained
     }
 
     /**
-     * @ORM\ManyToOne(targetEntity="\Aplab\AplabAdminBundle\Entity\Bind\Container", inversedBy="contained")
+     * @ORM\ManyToOne(targetEntity="\App\Entity\Bind\Container", inversedBy="contained")
      * @ORM\JoinColumn(nullable=true, onDelete="SET NULL")
      * @ModuleMetadata\Property(title="Container",
      *     cell={@ModuleMetadata\Cell(order=3000, width=320, type="Entity",
      *     options=@ModuleMetadata\Options(accessor="getName"))},
      *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Entity",
-     *     options=@ModuleMetadata\Options(data_class="\Aplab\AplabAdminBundle\Entity\Bind\Container"))})
+     *     options=@ModuleMetadata\Options(data_class="\App\Entity\Bind\Container"))})
      */
     private $container;
 

@@ -6,10 +6,10 @@
  * Time: 12:07
  */
 
-namespace Aplab\AplabAdminBundle\Component\FileStorage;
+namespace App\Component\FileStorage;
 
 
-use Aplab\AplabAdminBundle\Util\Path;
+use App\Util\Path;
 use Symfony\Component\Filesystem\Filesystem;
 
 class LocalStorage

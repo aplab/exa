@@ -6,14 +6,14 @@
  * Time: 0:07
  */
 
-namespace Aplab\AplabAdminBundle\Component\ModuleMetadata;
+namespace App\Component\ModuleMetadata;
 
 
 use Doctrine\ORM\Mapping\Annotation;
 
 /**
  * Class Options
- * @package Aplab\AplabAdminBundle\Component\ModuleMetadata
+ * @package App\Component\ModuleMetadata
  * @Annotation
  * @Target({"ANNOTATION"})
  */

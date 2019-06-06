@@ -6,16 +6,16 @@
  * Time: 17:56
  */
 
-namespace Aplab\AplabAdminBundle\Controller;
+namespace App\Controller;
 
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableRepresentation;
-use Aplab\AplabAdminBundle\Entity\UserFiles\File;
+use App\Component\DataTableRepresentation\DataTableRepresentation;
+use App\Entity\UserFiles\File;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
  * Class UserFilesController
- * @package Aplab\AplabAdminBundle\Controller
+ * @package App\Controller
  * @Route("/admin/user-files", name="admin_user_files_")
  */
 class UserFilesController extends ReferenceAdminController
@@ -31,7 +31,7 @@ class UserFilesController extends ReferenceAdminController
      * @return \Symfony\Component\HttpFoundation\Response
      * @throws \Psr\SimpleCache\InvalidArgumentException
      * @throws \ReflectionException
-     * @throws \Aplab\AplabAdminBundle\Component\Toolbar\Exception
+     * @throws \App\Component\Toolbar\Exception
      */
     public function listItems(DataTableRepresentation $data_table_representation)
     {

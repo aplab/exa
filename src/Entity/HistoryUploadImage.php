@@ -6,13 +6,13 @@
  * Time: 16:34
  */
 
-namespace Aplab\AplabAdminBundle\Entity;
+namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Class HistoryUploadImage
- * @package Aplab\AplabAdminBundle\Entity
- * @ORM\Entity(repositoryClass="Aplab\AplabAdminBundle\Repository\HistoryUploadImageRepository")
+ * @package App\Entity
+ * @ORM\Entity(repositoryClass="App\Repository\HistoryUploadImageRepository")
  * @ORM\Table(name="history_upload_image", indexes={
  *      @ORM\Index(name="path", columns={"path"}),
  *      @ORM\Index(name="favorites", columns={"favorites"})

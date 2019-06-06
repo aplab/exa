@@ -6,10 +6,10 @@
  * Time: 12:09
  */
 
-namespace Aplab\AplabAdminBundle\Util;
+namespace App\Util;
 
 
-use Aplab\AplabAdminBundle\Tools\Tools;
+use App\Tools\Tools;
 
 class Path
 {

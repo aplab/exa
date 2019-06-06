@@ -6,7 +6,7 @@
  * Time: 16:08
  */
 
-namespace Aplab\AplabAdminBundle\Component\Menu;
+namespace App\Component\Menu;
 
 
 use Psr\SimpleCache\CacheInterface;
@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
  * Class MenuManager
- * @package Aplab\AplabAdminBundle\Component\Menu
+ * @package App\Component\Menu
  */
 class MenuManager
 {

@@ -6,10 +6,10 @@
  * Time: 10:58
  */
 
-namespace Aplab\AplabAdminBundle\Component\InstanceEditor\FieldType;
+namespace App\Component\InstanceEditor\FieldType;
 
 
-use Aplab\AplabAdminBundle\Component\InstanceEditor\InstanceEditorField;
+use App\Component\InstanceEditor\InstanceEditorField;
 
 abstract class FieldTypeAbstract implements FieldTypeInterface
 {

@@ -6,14 +6,14 @@
  * Time: 14:54
  */
 
-namespace Aplab\AplabAdminBundle\Component\Menu;
+namespace App\Component\Menu;
 
 
 use http\Exception\RuntimeException;
 
 /**
  * Class Icon
- * @package Aplab\AplabAdminBundle\Component\Menu
+ * @package App\Component\Menu
  */
 class Icon
 {

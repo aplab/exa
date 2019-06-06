@@ -6,7 +6,7 @@
  * Time: 14:12
  */
 
-namespace Aplab\AplabAdminBundle\Component\ModuleMetadata;
+namespace App\Component\ModuleMetadata;
 
 use Doctrine\Common\Annotations\Annotation\Attribute;
 use Doctrine\Common\Annotations\Annotation\Attributes;
@@ -14,7 +14,7 @@ use Doctrine\Common\Annotations\Annotation\Target;
 
 /**
  * Class Module
- * @package Aplab\AplabAdminBundle\Annotation\Module
+ * @package App\Annotation\Module
  * @Annotation
  * @Target({"CLASS"})
  * @Attributes({

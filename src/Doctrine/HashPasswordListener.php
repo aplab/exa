@@ -6,10 +6,10 @@
  * Time: 10:50
  */
 
-namespace Aplab\AplabAdminBundle\Doctrine;
+namespace App\Doctrine;
 
 
-use Aplab\AplabAdminBundle\Entity\SystemUser;
+use App\Entity\SystemUser;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;

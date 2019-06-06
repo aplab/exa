@@ -11,11 +11,11 @@
  * Time: 0:10
  */
 
-namespace Aplab\AplabAdminBundle\Component\Uploader;
+namespace App\Component\Uploader;
 
 
-use Aplab\AplabAdminBundle\Component\FileStorage\LocalStorage;
-use Aplab\AplabAdminBundle\Entity\UserFiles\File;
+use App\Component\FileStorage\LocalStorage;
+use App\Entity\UserFiles\File;
 use Doctrine\ORM\EntityManagerInterface;
 
 /**

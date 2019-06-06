@@ -6,7 +6,7 @@
  * Time: 14:50
  */
 
-namespace Aplab\AplabAdminBundle\Component\Menu;
+namespace App\Component\Menu;
 
 
 abstract class Action

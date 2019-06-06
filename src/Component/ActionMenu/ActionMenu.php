@@ -6,11 +6,11 @@
  * Time: 15:20
  */
 
-namespace Aplab\AplabAdminBundle\Component\ActionMenu;
+namespace App\Component\ActionMenu;
 
 /**
  * Class ActionMenu
- * @package Aplab\AplabAdminBundle\Component\ActionMenu
+ * @package App\Component\ActionMenu
  */
 class ActionMenu implements \JsonSerializable
 {

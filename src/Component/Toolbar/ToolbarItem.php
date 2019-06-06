@@ -6,7 +6,7 @@
  * Time: 13:51
  */
 
-namespace Aplab\AplabAdminBundle\Component\Toolbar;
+namespace App\Component\Toolbar;
 
 
 class ToolbarItem implements \JsonSerializable

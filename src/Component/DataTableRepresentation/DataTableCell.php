@@ -6,14 +6,14 @@
  * Time: 10:46
  */
 
-namespace Aplab\AplabAdminBundle\Component\DataTableRepresentation;
+namespace App\Component\DataTableRepresentation;
 
 
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType\CellTypeFactory;
-use Aplab\AplabAdminBundle\Component\DataTableRepresentation\CellType\CellTypeInterface;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\Cell;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\Options;
-use Aplab\AplabAdminBundle\Component\ModuleMetadata\Property;
+use App\Component\DataTableRepresentation\CellType\CellTypeFactory;
+use App\Component\DataTableRepresentation\CellType\CellTypeInterface;
+use App\Component\ModuleMetadata\Cell;
+use App\Component\ModuleMetadata\Options;
+use App\Component\ModuleMetadata\Property;
 
 class DataTableCell
 {
