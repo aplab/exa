@@ -1,0 +1,28 @@
+{% extends '@AplabAdmin/index.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/static/cms/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('/static/cms/build.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('static/cms/build.js') }}"></script>
+{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>Login!</h1>
+                {% if error %}
+                    <div class="alert alert-danger">
+                        {{ error.messageKey|trans(error.messageData, 'security') }}
+                    </div>
+                {% endif %}
+                {{ form_start(form) }}
+                {{ form_row(form._username) }}
+                {{ form_row(form._password) }}
+                <button type="submit" class="btn btn-success">Login <span class="fas fa-lock"></span></button>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

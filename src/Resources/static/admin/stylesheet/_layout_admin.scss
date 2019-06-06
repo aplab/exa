@@ -1,0 +1,220 @@
+#aplab-admin-content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    background: $content-background-color none repeat scroll 0 0;
+    overflow: hidden;
+    z-index: 200;
+    //-webkit-transition: left 0.01s ease 0s;
+    //-o-transition: left 0.01s ease 0s;
+    //transition: left 0.01s ease 0s;
+}
+
+#aplab-admin-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 0;
+    right: auto;
+    background: $sidebar-background-color none repeat scroll 0 0;
+    -webkit-transition: width 0.15s ease 0s;
+    -o-transition: width 0.15s ease 0s;
+    transition: width 0.15s ease 0s;
+    overflow: hidden;
+    z-index: 300;
+    color: #fff;
+    padding-top: $navbar-height;
+}
+
+.aplab-admin-sidebar-open {
+    #aplab-admin-sidebar {
+        max-width: $sidebar-max-width;
+        width: 100%;
+        -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        -moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        box-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+    }
+    @media (min-width: $sidebar-max-width) {
+        #aplab-admin-sidebar {
+            max-width: $sidebar-max-width;
+            width: $sidebar-max-width;
+        }
+    }
+}
+
+#aplab-admin-sidebar-buttons {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: auto;
+    width: auto;
+    height: 50px;
+    //background: #ccc;
+}
+
+#aplab-admin-sidebar-button-close {
+    left: 0;
+    top: 0;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    line-height: 49px;
+    text-align: center;
+    display: block;
+    outline-style: none;
+    cursor: pointer;
+}
+
+#aplab-admin-sidebar-button-toggle-pin {
+    right: 0;
+    top: 0;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+    border: 0;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    line-height: 49px;
+    text-align: center;
+    display: block;
+    outline-style: none;
+    cursor: pointer;
+    transition: transform 0.15s ease 0s;
+}
+
+
+.aplab-admin-sidebar-pin {
+    #aplab-admin-sidebar-button-toggle-pin {
+        transform: rotate(90deg);
+    }
+}
+.aplab-admin-sidebar-pin.aplab-admin-sidebar-open {
+    #aplab-admin-content {
+        left: $sidebar-max-width;
+    }
+}
+
+#aplab-admin-open-sidebar {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: $navbar-height;
+    height: $navbar-height;
+    background: $navbar-background-color;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    line-height: 49px;
+    outline-style: none;
+    cursor: pointer;
+}
+#aplab-admin-open-action-menu {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: $navbar-height;
+    height: $navbar-height;
+    background: $navbar-background-color;
+    border: 0;
+    color: #fff;
+    font-size: 18px;
+    text-align: center;
+    overflow: hidden;
+    padding: 0;
+    margin: 0;
+    line-height: 49px;
+    outline-style: none;
+    cursor: pointer;
+}
+
+.aplab-admin-sidebar-open {
+    #aplab-admin-open-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: $allow-sidebar-pin-width) {
+    #aplab-admin-sidebar-button-toggle-pin {
+        display: none;
+    }
+    .aplab-admin-sidebar-pin.aplab-admin-sidebar-open {
+        #aplab-admin-content {
+            left: 0;
+        }
+    }
+}
+
+#apl-admin-main-menu-wrapper {
+    position: absolute;
+    left: 0;
+    top: $navbar-height;
+    bottom: 0;
+    right: auto;
+    width: $sidebar-max-width;
+    max-width: 100vw;
+    background: $sidebar-background-color;
+}
+
+#aplab-admin-navbar {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height :$navbar-height;
+    top: 0;
+    bottom: auto;
+    //overflow: hidden;
+    z-index: 200;
+    color: #fff;
+    background: $navbar-background-color;
+}
+#aplab-admin-workarea {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top :$navbar-height;
+    height: auto;
+    bottom: 0;
+    overflow: hidden;
+    z-index: 100;
+}
+
+#aplab-admin-toolbar-wrapper {
+    position: absolute;
+    left: $navbar-height;
+    right: $navbar-height;
+    top: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+    -webkit-transition: left 0.15s ease 0s;
+    -o-transition: left 0.15s ease 0s;
+    transition: left 0.15s ease 0s;
+    //background: #ccc;
+}
+.aplab-admin-sidebar-open {
+    #aplab-admin-toolbar-wrapper {
+        left: 0;
+        -webkit-transition: left 0.15s ease 0s;
+        -o-transition: left 0.15s ease 0s;
+        transition: left 0.15s ease 0s;
+    }
+}

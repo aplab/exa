@@ -1,0 +1,82 @@
+{% block datetime %}
+    <div class="w{{ cell_item.width }} text-center">
+        {% set tmp = attribute(item, cell_item.propertyName) %}
+        {% if tmp is null %}
+            <span class="text-muted">undefined</span>
+        {% else %}
+            {{ tmp|date("Y.m.d H:i:s") }}
+        {% endif %}
+    </div>
+{% endblock %}
+{% block userfiledirectlink %}
+    <div class="w{{ cell_item.width }}">
+        {% set tmp = cell_item.type.getValue(item) %}
+        {% if tmp is null %}
+            <span class="text-muted">undefined</span>
+        {% else %}
+            <a href="{{ tmp }}" target="_blank">{{ tmp }}</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block userfilelink %}
+    <div class="w{{ cell_item.width }}">
+        {% set tmp = cell_item.type.getValue(item) %}
+        {% if tmp is null %}
+            <span class="text-muted">undefined</span>
+        {% else %}
+            <a href="{{ tmp }}" target="_blank">{{ tmp }}</a>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block label %}
+    <div class="w{{ cell_item.width }}">
+        {{ cell_item.type.getValue(item)|default('<span class="text-muted">empty</span>')|raw }}
+    </div>
+{% endblock %}
+{% block entity %}
+    <div class="w{{ cell_item.width }}">
+        {{ cell_item.type.getValue(item)|default('<span class="text-muted">empty</span>')|raw }}
+    </div>
+{% endblock %}
+{% block tree %}
+    <div class="w{{ cell_item.width }} text-nowrap">
+        <span class="text-info">{{ cell_item.type.getPrefix(item)|raw }}</span>{{ cell_item.type.getValue(item) }}
+    </div>
+{% endblock %}
+{% block text %}
+    <div class="w{{ cell_item.width }}">
+        {{ cell_item.type.getValue(item) }}
+    </div>
+{% endblock %}
+{% block image %}
+    <div class="w{{ cell_item.width }} i" style="background-image: url('{{ cell_item.type.getValue(item) }}')">&nbsp;</div>
+{% endblock %}
+{% block rtext %}
+    <div class="w{{ cell_item.width }} text-right">
+        {{ cell_item.type.getValue(item) }}
+    </div>
+{% endblock %}
+{% block editid %}
+    <div class="w{{ cell_item.width }} text-right">
+        <a href="{{ app.request.pathInfo }}{{ attribute(item, cell_item.propertyName) }}">
+            {{ "%07d"|format(attribute(item, cell_item.propertyName)) }}
+        </a>
+    </div>
+{% endblock %}
+{% block example %}
+{% endblock %}
+{% block active %}
+    <div class="w{{ cell_item.width }}">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox"
+                    {{ cell_item.type.getValue(item) ? ' checked="checked"' }}
+                   class="custom-control-input"
+                   data-class="{{ cell_item.type.getClass(item) }}"
+                   name="{{ cell_item.propertyName }}"
+                   id="c{{ cell_item.type.uniqueId }}{% if ___global_cell_counter is defined %}-{{ ___global_cell_counter }}{% endif %}">
+            <label class="custom-control-label"
+                   for="c{{ cell_item.type.uniqueId }}{% if ___global_cell_counter is defined %}-{{ ___global_cell_counter }}{% endif %}"></label>
+        </div>
+
+    </div>
+{% endblock %}

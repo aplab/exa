@@ -19,3 +19,4 @@
 /.web-server-pid
 ###< symfony/web-server-bundle ###
 /.idea/
+/src/Resources/static/admin/node_modules/

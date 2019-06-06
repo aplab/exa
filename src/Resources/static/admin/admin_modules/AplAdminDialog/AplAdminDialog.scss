@@ -1,0 +1,219 @@
+$header-height: 56px;
+$footer-height: 65px;
+.apl-admin-dialog {
+  background: transparent;
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  height: auto;
+  overflow: hidden;
+  &-adjust-height-workaround {
+    position: fixed;
+    overflow: hidden;
+    opacity: 0;
+    width: 0;
+    height: 100vh;
+  }
+  &-backdrop {
+    background: #000;
+    opacity: .5;
+    display: block;
+    z-index: 100;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  &-container {
+    background: transparent;
+    display: block;
+    z-index: 200;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    overflow: hidden;
+  }
+  &-content {
+    background: #fff;
+    margin: 10px auto;
+    max-width: calc(100vw - 20px);
+    max-height: calc(100vh - 20px);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,.5);
+  }
+  &-maximize {
+    width: calc(100vw - 20px);
+    height: calc(100vh - 20px);
+  }
+  &-maximize-width {
+    width: calc(100vw - 20px);
+  }
+  &-maximize-height {
+    height: calc(100vh - 20px);
+  }
+  @media (min-width: 768px) {
+    &-content {
+      margin: 30px auto;
+      max-width: calc(100vw - 60px);
+      max-height: calc(100vh - 60px);
+    }
+    &-maximize {
+      width: calc(100vw - 60px);
+      height: calc(100vh - 60px);
+    }
+    &-maximize-width {
+      width: calc(100vw - 60px);
+    }
+    &-maximize-height {
+      height: calc(100vh - 60px);
+    }
+  }
+  &-header {
+    height: $header-height;
+    padding: 15px 15px 0;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    width: auto;
+    bottom: auto;
+    border-bottom: 1px solid #e5e5e5;
+    h4 {
+      white-space: nowrap;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      max-width: 100%;
+      overflow: hidden;
+    }
+  }
+  &-body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: $header-height;
+    bottom: $footer-height;
+    width: auto;
+    height: auto;
+  }
+  &-footer {
+    height: $footer-height;
+    padding: 15px 15px 0;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: auto;
+    top: auto;
+    overflow: hidden;
+    border-top: 1px solid #e5e5e5;
+    text-align: right;
+    background: #fff;
+    @mixin b {
+      &:first-child {
+        button {
+          margin-right: 0;
+        }
+      }
+      button {
+        max-width: 100%;
+        display: block;
+        -ms-text-overflow: ellipsis;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-right: 10px;
+      }
+    }
+    &-button-1 {
+      display: block;
+      float: right;
+      max-width: 99.95%;
+      //overflow: hidden;
+      @include b;
+    }
+    &-button-2 {
+      display: block;
+      float: right;
+      max-width: 49.95%;
+      //overflow: hidden;
+      @include b;
+    }
+    &-button-3 {
+      display: block;
+      float: right;
+      max-width: 33.33333333%;
+      //overflow: hidden;
+      @include b;
+    }
+    &-button-4 {
+      display: block;
+      float: right;
+      max-width: 24.95%;
+      //overflow: hidden;
+      @include b;
+    }
+  }
+  &-panel {
+    padding: 15px;
+  }
+  &-panel-scroll-y {
+    padding: 15px;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+  &-toggle-menu {
+    position: absolute;
+    right: -10px;
+    top: 0;
+    width: 36px;
+    height: 36px;
+    background: #fff;
+    line-height: 36px;
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+    &:before {
+      opacity: 0.2;
+    }
+  }
+  &-header-menu {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 26px;
+    height: 26px;
+    background: #fff;
+  }
+  .dropdown-menu {
+    max-height: calc(100vh - 30px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    li {
+      a {
+        padding-top: 7px;
+        padding-bottom: 7px;
+      }
+    }
+  }
+  @media (min-width: 768px) {
+    .dropdown-menu {
+      max-height: calc(100vh - 70px);
+    }
+  }
+}

@@ -1,0 +1,108 @@
+.apl-admin-file-uploader {
+  &-list {
+    position: absolute;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: auto;
+    height: auto;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    padding: 15px;
+  }
+  &-item {
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    cursor: default;
+    position: relative;
+    margin-bottom: 15px;
+  }
+  &-metadata {
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    color: #000;
+    cursor: default;
+    height: 21px;
+  }
+  &-name {
+    height: 21px;
+    overflow: hidden;
+    width: 50%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    white-space: nowrap;
+    float: left;
+    position: relative;
+  }
+  &-type {
+    height: 21px;
+    overflow: hidden;
+    width: 19%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    white-space: nowrap;
+    float: left;
+    padding-left: 15px;
+    position: relative;
+  }
+  &-size {
+    height: 21px;
+    overflow: hidden;
+    width: 30%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    white-space: nowrap;
+    float: left;
+    text-align: right;
+    padding-left: 15px;
+    position: relative;
+  }
+  &-progress {
+    width: 100%;
+    clear: both;
+    overflow: hidden;
+    color: #000;
+    cursor: default;
+    height: 21px;
+    margin-bottom: 0;
+    display: none;
+  }
+  &-progress-bar {
+    overflow: hidden;
+    width: 0%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    line-height: 20px;
+    white-space: nowrap;
+    text-align: center;
+    //opacity: 0.8;
+  }
+  &-status {
+    height: 21px;
+    overflow: hidden;
+    width: 99.6%;
+    -ms-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    line-height: 19px;
+    white-space: nowrap;
+    float: left;
+    position: relative;
+  }
+  &-success {
+    color: #090;
+    font-weight: bold;
+  }
+  &-fail {
+    color: #d00;
+  }
+  &-clipboard {
+    border-bottom: 1px #333 dashed;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,101 @@
+{% extends ('@AplabAdmin/index.html.twig') %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/static/cms/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('/static/cms/build.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('static/cms/build.js') }}"></script>
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\MenuController::mainMenu'
+    )) }}
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\MenuController::actionMenu'
+    )) }}
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\MenuController::toolbar'
+    )) }}
+{% endblock %}
+{% block body_classes %}{{ UiDataTransmitter.getBodyClasses() }}{% endblock %}
+{% block body %}
+    <div id="aplab-admin-sidebar">
+        {% block sidebar %}
+            <div id="aplab-admin-sidebar-buttons">
+                <button id="aplab-admin-sidebar-button-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button id="aplab-admin-sidebar-button-toggle-pin">
+                    <i class="fas fa-thumbtack"></i>
+                </button>
+            </div>
+        {% endblock %}
+        <div id="apl-admin-main-menu-wrapper"></div>
+    </div>
+    <div id="aplab-admin-content">
+        {% block content %}
+            <div id="aplab-admin-navbar">
+                {% block navbar %}
+                    <button id="aplab-admin-open-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button id="aplab-admin-open-action-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div id="aplab-admin-toolbar-wrapper"></div>
+                {% endblock %}
+            </div>
+            <div id="aplab-admin-workarea">
+                {% block workarea %}
+                    {#<div class="container-fluid">#}
+                        {#<div class="row">#}
+                            {#<div class="col py-3">#}
+                                {#{% form_theme form 'bootstrap_4_horizontal_layout.html.twig' %}#}
+                                {#{{ form_start(form) }}#}
+                                {#{{ form_widget(form) }}#}
+                                {#{{ csrf_token('test') }}#}
+                                {#{{ form_end(form) }}#}
+                            {#</div>#}
+                        {#</div>#}
+                    {#</div>#}
+
+
+                    {#{% macro recursiveCategory(category) %}#}
+                        {#{% import _self as self %}#}
+                        {#<li>#}
+                            {#<h4>{{ category.id }}</h4>#}
+
+                            {#{% if category.children|length %}#}
+                                {#<ul>#}
+                                    {#{% for child in category.children %}#}
+                                        {#{{ self.recursiveCategory(child) }}#}
+                                    {#{% endfor %}#}
+                                {#</ul>#}
+                            {#{% endif %}#}
+                        {#</li>#}
+                    {#{% endmacro %}#}
+
+                    {#{% from _self import recursiveCategory %}#}
+
+                    {#{% if roots %}#}
+                        {#<div id="categories">#}
+                            {#<ul>#}
+                                {#{% for category in roots %}#}
+                                    {#{{ recursiveCategory(category) }}#}
+                                {#{% endfor %}#}
+                            {#</ul>#}
+                        {#</div>#}
+                    {#{% endif %}#}
+
+                    {% for item in repo.rootPage(1, 4) %}
+                        <p class="pl-5">
+                            {% for i in range(0, item.level) %}
+                                .
+                            {% endfor %}
+                            {{ item.id }}-{{ item.level }}-{{ item.name }}
+                        </p>
+                    {% endfor %}
+
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

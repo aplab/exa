@@ -1,0 +1,129 @@
+# This file is the entry point to configure your own services.
+# Files in the packages/ subdirectory configure your dependencies.
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: 'en'
+    aplab_admin_public_dir: '%kernel.project_dir%/public/'
+    aplab_admin_data_dir: '%kernel.project_dir%/var/aplab-admin/data/'
+    aplab_admin_local_storage_path: '%kernel.project_dir%/public/aplab/filestorage/'
+
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        autowire: true      # Automatically injects dependencies in your services.
+        autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
+
+    # makes classes in src/ available to be used as services
+    # this creates a service per class whose id is the fully-qualified class name
+
+    #Aplab\AplabAdminBundle\:
+    #    resource: '../../*'
+    #    exclude: '../../{Entity,Migrations,Tests,Kernel.php,Component,Util}'
+
+    Aplab\AplabAdminBundle\Util\:
+        resource: '../../Util'
+#        exclude: '../../{Entity,Migrations,Tests,Kernel.php,Component}'
+#        exclude: '../../{Entity,Migrations,Tests,Kernel.php,Component}'
+
+    Aplab\AplabAdminBundle\Service\:
+        resource: '../../Service'
+
+    Aplab\AplabAdminBundle\Repository\:
+        resource: '../../Repository'
+        autowire: true
+        tags: ['doctrine.repository_service']
+
+    Aplab\AplabAdminBundle\Component\Menu\MenuManager:
+        arguments:
+            $structure_location: ~
+
+    Aplab\AplabAdminBundle\Component\ActionMenu\ActionMenuManager:
+        arguments: ['@router.default']
+
+    Aplab\AplabAdminBundle\Component\Toolbar\ToolbarManager:
+        arguments: ['@router.default']
+
+    Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository:
+        arguments: ['@cache.app.simple', '@annotations.reader']
+
+    Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableRepresentation:
+        arguments:
+            - '@Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository'
+            - '@doctrine.orm.entity_manager'
+
+    Aplab\AplabAdminBundle\Component\DataTableRepresentation\DataTableRepresentationTreeMod:
+        arguments:
+        - '@Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository'
+        - '@doctrine.orm.entity_manager'
+
+    Aplab\AplabAdminBundle\Component\SystemState\SystemStateManager:
+        arguments:
+            $aplab_admin_data_dir: '%aplab_admin_data_dir%'
+
+#    aplab_admin.system_state_manager:
+#        class: Aplab\AplabAdminBundle\Component\SystemState\SystemStateManager
+#        autowire: true
+#        arguments:
+#            $aplab_admin_data_dir: '%aplab_admin_data_dir%'
+
+    Aplab\AplabAdminBundle\Component\Helper\AdminControllerHelper:
+        arguments:
+            - '@Aplab\AplabAdminBundle\Component\Menu\MenuManager'
+            - '@Aplab\AplabAdminBundle\Component\ActionMenu\ActionMenuManager'
+            - '@Aplab\AplabAdminBundle\Component\Toolbar\ToolbarManager'
+
+    # controllers are imported separately to make sure services can be injected
+    # as action arguments even if you don't extend any base controller class
+    Aplab\AplabAdminBundle\Controller\:
+        resource: '../../Controller'
+        tags: ['controller.service_arguments']
+
+    # add more service definitions when explicit configuration is needed
+    # please note that last definitions always *replace* previous ones
+
+#    CapsuleCmsUiDataTransmitter:
+#        class: Capsule\Util\CapsuleCmsUiDataTransmitter
+#
+
+    Aplab\AplabAdminBundle\EventListener\TerminateListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.terminate }
+
+
+#    aplab_aplab_admin.event_listener.terminate_listener:
+#        class: Aplab\AplabAdminBundle\EventListener\TerminateListener
+#        arguments: ['@aplab_admin.system_state_manager', '@?']
+
+    aplab_admin.instatce_editor_manager:
+        class: Aplab\AplabAdminBundle\Component\InstanceEditor\InstatceEditorManager
+        public: true
+        arguments: ~
+
+    Aplab\AplabAdminBundle\Component\InstanceEditor\InstatceEditorManager: '@aplab_admin.instatce_editor_manager'
+
+#            - '@Aplab\AplabAdminBundle\Component\ModuleMetadata\ModuleMetadataRepository'
+#            - '@doctrine.orm.entity_manager'
+
+    aplab_aplab_admin.security.login_form_authenticator:
+        class: Aplab\AplabAdminBundle\Security\LoginFormAuthenticator
+        autowire: true
+
+
+    aplab_aplab_admin.doctrine.hash_password_listener:
+        class: Aplab\AplabAdminBundle\Doctrine\HashPasswordListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    aplab_aplab_admin.local_storage:
+        class: Aplab\AplabAdminBundle\Component\FileStorage\LocalStorage
+        arguments:
+            - {$file_storage_path: '%aplab_admin_local_storage_path%'}
+            - {$public_dir: '%aplab_admin_public_dir%'}
+
+    Aplab\AplabAdminBundle\Component\FileStorage\LocalStorage: '@aplab_aplab_admin.local_storage'

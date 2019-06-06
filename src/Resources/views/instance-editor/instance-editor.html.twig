@@ -1,0 +1,51 @@
+{% extends ('@AplabAdmin/admin.html.twig') %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            new AplInstanceEditor($('#apl-instance-editor'));
+        });
+    </script>
+    <script src="{{ asset('/static/cms/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/static/cms/ckeditor/adapters/jquery.js') }}"></script>
+{% endblock %}
+{% block workarea %}
+    {% set prefix = 'apl-instance-editor' %}
+    {% set form_name = 'apl-instance-editor' %}
+    <div class="{{ prefix }}" id="{{ prefix }}">
+        <div class="{{ prefix }}-head">
+            <div class="{{ prefix }}-tabs-wrapper">
+                <div class="{{ prefix }}-tabs">
+                    {% for tab in instance_editor.tab %}
+                    <div class="{{ prefix }}-tab">
+                        {{ tab.name }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="{{ prefix }}-arrow-left fas fa-caret-left"></div>
+            <div class="{{ prefix }}-arrow-right fas fa-caret-right"></div>
+        </div>
+        <div class="{{ prefix }}-body">
+            <form method="post" id="<?=$this->instance->instanceName?>-form">
+                {% for tab in instance_editor.tab %}
+                <div class="{{ prefix }}-panel">
+                    {% if tab.ckeditor %}
+                        {% for field in tab.field %}
+                            {{ block(field.type.type, "@AplabAdmin/instance-editor/field-type.html.twig") }}
+                        {% endfor %}
+                    {% else %}
+                        <div class="{{ prefix }}-elements-wrapper">
+                            <div class="{{ prefix }}-elements">
+                                {% for field in tab.field %}
+                                    {{ block(field.type.type, "@AplabAdmin/instance-editor/field-type.html.twig") }}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+{% endblock %}

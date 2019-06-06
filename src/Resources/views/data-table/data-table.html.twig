@@ -1,0 +1,107 @@
+{% extends ('@AplabAdmin/admin.html.twig') %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(document).ready(function () {
+            new AplDataTable($('#apl-data-table'));
+        });
+    </script>
+{% endblock %}
+{% block stylesheets %}
+    {{ parent() }}
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\UtilController::cssWidthDefinition'
+    )) }}
+{% endblock %}
+{% block workarea %}
+    <!--data grid-->
+    <div class="apl-data-table"
+         id="apl-data-table"
+         data-base-url="{{ app.request.pathInfo }}">
+        <!--data grid body-->
+        <div class="apl-data-table-body">
+            <!--data grid content-->
+            <div class="apl-data-table-content">
+
+                <div class="apl-data-table-header">
+                    <div class="apl-data-table-header-row wExt">
+                        {% for cell_item in data_table.cell %}
+                            <div class="w{{ cell_item.width }}"
+                                 title="{{ cell_item.title }}">
+                                {{ cell_item.title }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="apl-data-table-sidebar">
+                    <div class="apl-data-table-sidebar-header">
+                        {#<input type="checkbox">#}
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="apl-data-table-sidebar-header-check">
+                            <label class="custom-control-label" for="apl-data-table-sidebar-header-check"></label>
+                        </div>
+                    </div>
+                    <div class="apl-data-table-sidebar-body">
+                        <div class="apl-data-table-sidebar-body-col"></div>
+                    </div>
+                </div>
+
+                <div class="apl-data-table-data-wrapper">
+                    <div class="apl-data-table-data wSum">
+                        {% set ___global_cell_counter = 0 %}
+                        {% for item in data_table.items %}
+                            <div class="wExt" data-pk="{{ data_table.helperIdentifierJson(item) }}">
+                                {% for cell_item in data_table.cell %}
+                                    {{ block(cell_item.type.type, "@AplabAdmin/data-table/cell-type.html.twig") }}
+                                    {% set ___global_cell_counter = ___global_cell_counter + 1 %}
+                                {% endfor %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+            </div>
+            <!--end of apl-data-table-content-->
+
+            <div class="apl-data-table-scroll-horizontal-wrapper">
+                <div class="apl-data-table-scroll-horizontal">
+                    <div class="apl-data-table-scroll-horizontal-content"></div>
+                </div>
+            </div>
+
+            <div class="apl-data-table-scroll-vertical-wrapper">
+                <div class="apl-data-table-scroll-vertical">
+                    <div class="apl-data-table-scroll-vertical-content"></div>
+                </div>
+            </div>
+
+        </div>
+        <!--end of data grid body-->
+        <!--data grid footer-->
+        <div class="apl-data-table-footer">
+            <div class="apl-data-table-prev{{ pager.prev ? '' : ' disabled' }}">
+                <span class="fas fa-chevron-left" aria-hidden="true"></span>
+            </div>
+            <div class="apl-data-table-page">
+                <select class="form-control">
+                    {% for p in pager.pages %}
+                        <option value="{{ p }}"{{ p == pager.currentPage ? ' selected' }}>{{ p }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="apl-data-table-next{{ pager.next ? '' : ' disabled' }}">
+                <span class="fas fa-chevron-right" aria-hidden="true"></span>
+            </div>
+            <div class="apl-data-table-limit">
+                <select class="form-control">
+                    {% for ipp in pager.itemsPerPageVariants %}
+                        <option value="{{ ipp }}"{{ ipp == pager.itemsPerPage ? ' selected' }}>{{ ipp }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <!--end of data grid footer-->
+    </div>
+    <!--end of data grid-->
+{% endblock %}

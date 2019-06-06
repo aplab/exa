@@ -1,0 +1,34 @@
+$navbar-height: 50px;
+$sidebar-max-width: 320px;
+//$sidebar-background-color: rgba(48, 52, 62, .9);
+//$sidebar-background-color: rgba(48, 52, 62, 1);
+$sidebar-background-color: #3a3a3a;
+$content-background-color: #fff;
+$allow-sidebar-pin-width: 768px;
+$navbar-background-color: #3a3a3a;
+$navbar-background-color: #323232;
+
+.version {
+    content: '12345';
+}
+
+@import "common";
+
+@import "util";
+
+html {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+@import "layout_admin";
+

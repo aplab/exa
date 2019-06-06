@@ -1,0 +1,25 @@
+//@for $i from 0 through 600 {
+//    .w#{$i} {
+//        width: 1px * $i;
+//    }
+//    .wm#{$i} {
+//        min-width: 1px * $i;
+//    }
+//    .wx#{$i} {
+//        max-width: 1px * $i;
+//    }
+//}
+
+.sf-dump {
+    z-index: 10000000 !important;
+}
+.sf-toolbarreset {
+    bottom: -13px!important;
+}
+.sf-toolbarreset:hover {
+    bottom: 0!important;
+}
+
+.bootstrap-datetimepicker-widget * {
+    border: 0 !important;
+}

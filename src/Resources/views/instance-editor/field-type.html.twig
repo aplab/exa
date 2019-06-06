@@ -1,0 +1,161 @@
+{% block datetime %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">
+            {{ field.title }}
+        </label>
+        {% set tmp = attribute(item, field.propertyName) %}
+        {% if tmp is null %}
+            <div class="{{ prefix }}-value {{ prefix }}-value-label"
+                 id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+                <span class="text-muted">undefined</span>
+            </div>
+        {% else %}
+            <div class="{{ prefix }}-value {{ prefix }}-value-label"
+                 id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+                {{ field.type.value }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block label %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value {{ prefix }}-value-label"
+             id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+            {{ field.type.value }}
+        </div>
+    </div>
+{% endblock %}
+{% block id %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        {% set tmp = attribute(item, field.propertyName) %}
+        {% if tmp is null %}
+            <div class="{{ prefix }}-value {{ prefix }}-value-label"
+                 id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+                <span class="text-muted">undefined</span>
+            </div>
+        {% else %}
+            <div class="{{ prefix }}-value {{ prefix }}-value-label"
+                 id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+                {{ field.type.value }}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}
+{% block text %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value">
+            <input type="text" class="form-control" placeholder=""
+                   autocorrect="off" autocapitalize="none" autocomplete="off"
+                   name="{{ form_name }}[{{ field.propertyName }}]"
+                   id="{{ prefix }}-element-{{ field.type.uniqueId }}"
+                   value="{{ field.type.value }}">
+        </div>
+    </div>
+{% endblock %}
+{% block textarea %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value">
+            <textarea class="form-control" rows="3"
+                      name="{{ form_name }}[{{ field.propertyName }}]"
+                      id="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.type.value }}</textarea>
+        </div>
+    </div>
+{% endblock %}
+{% block datetimepicker %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value">
+            <div class="input-group date aplab-admin-field-type-datetimepicker"
+                 id="{{ prefix }}-element-{{ field.type.uniqueId }}-wrapper"
+                 data-target-input="nearest">
+                <input type="text" placeholder=""
+                       autocorrect="off" autocapitalize="none" autocomplete="off"
+                       class="form-control datetimepicker-input"
+                       data-target="#{{ prefix }}-element-{{ field.type.uniqueId }}-wrapper"
+                       name="{{ form_name }}[{{ field.propertyName }}]"
+                       id="{{ prefix }}-element-{{ field.type.uniqueId }}"
+                       value="{{ field.type.value }}">
+                <div class="input-group-append"
+                     data-target="#{{ prefix }}-element-{{ field.type.uniqueId }}-wrapper"
+                     data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block ckeditor %}
+    <textarea class="{{ prefix }}-ckeditor"
+              name="{{ form_name }}[{{ field.propertyName }}]"
+              id="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.type.value }}</textarea>
+{% endblock %}
+{% block entity %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value">
+            <select class="form-control"
+                    name="{{ form_name }}[{{ field.propertyName }}]"
+                    id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+                <option value="0"></option>
+                {% for option in field.type.optionsDataList %}
+                    <option value="{{ option.value }}"{{ option.selected ? ' selected' }}>{{ option.text }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+{% endblock %}
+{% block example %}
+{% endblock %}
+{% block image %}
+    <div class="{{ prefix }}-element {{ prefix }}-element-image">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary btn-light" type="button">
+                        <span class="fas fa-upload"></span>
+                    </button>
+                </div>
+                <input type="text" class="form-control" placeholder=""
+                       autocorrect="off" autocapitalize="none" autocomplete="off"
+                       name="{{ form_name }}[{{ field.propertyName }}]"
+                       id="{{ prefix }}-element-{{ field.type.uniqueId }}"
+                       value="{{ field.type.value }}">
+                <span class="input-group-append">
+                    <button class="btn btn-outline-secondary btn-light" type="button">
+                        <span class="fas fa-star"></span>
+                    </button>
+                    <button class="btn btn-outline-secondary btn-light" type="button">
+                        <span class="fas fa-history"></span>
+                    </button>
+                </span>
+            </div>
+            <div class="img-thumbnail"><div class="preview"></div></div>
+        </div>
+    </div>
+{% endblock %}
+{% block flag %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label-checkbox" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value-checkbox">
+            <input type="hidden" name="{{ form_name }}[{{ field.propertyName }}]" value="0">
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" value="1"
+                        {{ field.type.value ? 'checked="checked"' }}
+                       name="{{ form_name }}[{{ field.propertyName }}]"
+                       id="{{ prefix }}-element-{{ field.type.uniqueId }}">
+                <label class="custom-control-label"
+                       for="{{ prefix }}-element-{{ field.type.uniqueId }}"></label>
+            </div>
+            {#<input type="checkbox"#}
+                   {#{{ field.type.value ?: 'checked="checked"' }}#}
+                   {#name="{{ form_name }}[{{ field.propertyName }}]"#}
+                   {#id="{{ prefix }}-element-{{ field.type.uniqueId }}"#}
+                   {#value="1"><label for="{{ prefix }}-element-{{ field.type.uniqueId }}"></label>#}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,3 @@
+aplab_admin:
+    resource: '@AplabAdminBundle/Controller'
+    type: annotation

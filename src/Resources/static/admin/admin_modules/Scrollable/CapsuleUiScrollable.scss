@@ -1,0 +1,42 @@
+.capsule-ui-scrollable {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: auto;
+  overflow: hidden;
+  box-sizing: border-box;
+  &-wrapper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: -100px;
+    bottom: 0;
+    width: auto;
+    overflow: hidden;
+    overflow-y: scroll;
+    box-sizing: border-box;
+  }
+  &-content {
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  &-scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 0;
+    background: #fff;
+    display: none;
+    box-sizing: border-box;
+    opacity: .3;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+  }
+  &-scrollbar:hover {
+    //width: 10px;
+  }
+}

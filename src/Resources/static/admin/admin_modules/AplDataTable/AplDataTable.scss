@@ -1,0 +1,357 @@
+$header-height: 38px;
+$footer-height: 52px;
+$sidebar-width: 38px;
+$panel-color: #f8f8f8;
+$border-color: #ddd;
+.apl-data-table {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    background: #fff;
+    &-scrollbar-calc-outer {
+        z-index: 1;
+        width: 200px;
+        height: 200px;
+        position: relative;
+        overflow: scroll;
+        display: block;
+        visibility: hidden;
+    }
+    &-scrollbar-calc-inner {
+        display: block;
+        width: auto;
+        height: 100%;
+    }
+    &-body {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: $footer-height;
+        overflow: hidden;
+        z-index: 200;
+        background: $panel-color;
+    }
+    &-scroll-horizontal-wrapper {
+        position: absolute;
+        left: $sidebar-width;
+        bottom: 0;
+        right: 0;
+        top: auto;
+        height: 0;
+        overflow: hidden;
+    }
+    &-scroll-horizontal {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        top: auto;
+        height: 200px;
+        overflow-y: hidden;
+        overflow-x: auto;
+        &-content {
+            height: 10px;
+            width: auto;
+        }
+    }
+    &-scroll-vertical-wrapper {
+        position: absolute;
+        right: 0;
+        top: $header-height;
+        bottom: 0;
+        width: 0;
+        left: auto;
+        overflow: hidden;
+    }
+    &-scroll-vertical {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 200px;
+        left: auto;
+        overflow-x: hidden;
+        overflow-y: auto;
+        &-content {
+            width: 10px;
+            height: auto;
+        }
+    }
+    &-content {
+        position: absolute;
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
+    }
+    &-header {
+        position: absolute;
+        left: $sidebar-width;
+        right: 0;
+        top: 0;
+        height: $header-height;
+        z-index: 100;
+        overflow: hidden;
+        background: #fff;
+        >div {
+            border: 0;
+            overflow: hidden;
+            clear: both;
+            position: absolute;
+            left: 0;
+            top: 0;
+            > div {
+                height: $header-height;
+                border: 1px solid $border-color;
+                border-left: 0;
+                float: left;
+                padding: 8px;
+                overflow: hidden;
+                white-space: nowrap;
+                -ms-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                background: $panel-color;
+            }
+        }
+    }
+    &-sidebar {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: $sidebar-width;
+        bottom: 0;
+        background: #fff;
+        &-header {
+            border: 1px solid $border-color;
+            position: absolute;
+            left: 0;
+            top: 0;
+            right: 0;
+            height: $header-height;
+            padding: 8px 0;
+            text-align: left;
+            background: $panel-color;
+            overflow: hidden;
+            .custom-checkbox {
+                label {
+                    left: 10px;
+                }
+            }
+        }
+        &-body {
+            position: absolute;
+            left: 0;
+            top: $header-height;
+            right: 0;
+            bottom: 0;
+            overflow: hidden;
+            >div {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: $sidebar-width;
+                >div {
+                    border: 1px solid $border-color;
+                    border-top: 0;
+                    padding: 8px 0;
+                    text-align: left;
+                    overflow: hidden;
+                    -ms-text-overflow: ellipsis;
+                    //text-overflow: ellipsis;
+                    background: $panel-color;
+                    position: relative;
+                    .custom-checkbox {
+                        label {
+                            left: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &-data-wrapper {
+        position: absolute;
+        left: $sidebar-width;
+        top: $header-height;
+        right: 0;
+        bottom: 0;
+        overflow: hidden;
+        background: #fff;
+    }
+    &-data {
+        position: absolute;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+        > div {
+            border: 0;
+            overflow: hidden;
+            clear: both;
+            > div {
+                border: 1px solid $border-color;
+                border-top: 0;
+                border-left: 0;
+                float: left;
+                padding: 8px;
+                overflow: hidden;
+                white-space: nowrap;
+                -ms-text-overflow: ellipsis;
+                text-overflow: ellipsis;
+                min-height: 37px;
+                a {
+                    text-decoration: underline;
+                }
+            }
+            .cell-icon {
+                text-align: center;
+            }
+            > div.i {
+                //padding: 0;
+                //background: #F9F9F9 center center no-repeat;
+                background: transparent center center no-repeat;
+                background-size: cover;
+                //background-clip: content-box;
+            }
+            > div.ip-address {
+                white-space: pre;
+                font-family: Consolas, Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace, serif;
+                text-align: center;
+            }
+            //> div:after {
+            //    content: '\00A0';
+            //}
+        }
+        > div.fat-row {
+            > div {
+                min-height: 64px;
+            }
+        }
+        > div:hover {
+            background-color: rgba(0, 0, 0, 0.075);
+        }
+        > .apl-data-table-active {
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+        > div.apl-data-table-active:hover {
+            background-color: rgba(0, 0, 0, 0.125);
+        }
+    }
+    // footer
+    &-footer {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        height: $footer-height;
+        overflow: hidden;
+        z-index: 300;
+        background: $panel-color;
+        border-top: 1px $border-color solid;
+    }
+    &-prev {
+        display: block;
+        width: 14.9%;
+        overflow: hidden;
+        height: $footer-height;
+        float: left;
+        text-align: center;
+        line-height: $footer-height;
+        cursor: pointer;
+    }
+    &-prev.disabled {
+        opacity: 0.3;
+        cursor: default;
+    }
+    &-page {
+        display: block;
+        width: 34.9%;
+        overflow: hidden;
+        height: $footer-height;
+        float: left;
+        text-align: center;
+        padding: 8px;
+        select {
+            text-align: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+    &-next {
+        display: block;
+        width: 14.9%;
+        overflow: hidden;
+        height: $footer-height;
+        float: left;
+        text-align: center;
+        line-height: $footer-height;
+        cursor: pointer;
+    }
+    &-next.disabled {
+        opacity: 0.3;
+        cursor: default;
+    }
+    &-limit {
+        display: block;
+        width: 34.9%;
+        overflow: hidden;
+        height: $footer-height;
+        float: left;
+        text-align: center;
+        padding: 8px;
+        select {
+            text-align: center;
+            padding-left: 0;
+            padding-right: 0;
+        }
+    }
+}
+
+@media (min-width: 480px) {
+    .apl-data-table {
+        &-prev::after {
+            content: 'Prev';
+        }
+        &-next::before {
+            content: 'Next';
+        }
+        &-limit {
+            select {
+                display: block;
+                width: 59.9%;
+                float: left;
+                max-width: 120px;
+            }
+        }
+        &-limit::before {
+            content: 'Limit:';
+            display: block;
+            width: 39.9%;
+            float: left;
+            text-align: right;
+            line-height: 34px;
+            padding-right: 8px;
+        }
+        &-page {
+            select {
+                display: block;
+                width: 59.9%;
+                max-width: 120px;
+                float: left;
+            }
+        }
+        &-page::before {
+            content: 'Page:';
+            display: block;
+            width: 39.9%;
+            float: left;
+            text-align: right;
+            line-height: 34px;
+            padding-right: 8px;
+        }
+    }
+}
+// end of footer

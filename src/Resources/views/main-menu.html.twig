@@ -1,0 +1,6 @@
+<script>
+    $(document).ready(function () {
+        new AplAdminMenu({{ json|raw }}, $('#apl-admin-main-menu-wrapper').first());
+        new CapsuleUiScrollable('apl-admin-main-menu-wrapper-scrollable', $('#apl-admin-main-menu-wrapper'));
+    });
+</script>

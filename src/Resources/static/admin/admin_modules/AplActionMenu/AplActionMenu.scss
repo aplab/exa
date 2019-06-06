@@ -1,0 +1,92 @@
+$namespace: apl-action-menu;
+.apl-action-menu {
+  position: fixed;
+  z-index: 400000;
+  top: 10px;
+  right: 16px;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.176);
+  padding: 5px 0;
+  max-height: calc(100vh - 20px);
+  max-height: -webkit-calc(100vh - 20px);
+  max-width: calc(100vw - 32px);
+  overflow-x: hidden;
+  display: none;
+  &-wrapper {
+    max-height: calc(100vh - 32px);
+    max-width: calc(100vw - 34px);
+    overflow-x: hidden;
+    overflow-y: hidden;
+    position: relative;
+  }
+  &-container {
+    max-height: calc(100vh - 32px);
+    max-width: calc(100vw - 34px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    position: relative;
+    z-index: 10000;
+  }
+  &-content {
+    width: auto;
+    height: auto;
+    a, span {
+      clear: both;
+      color: #333;
+      display: block;
+      font-weight: 400;
+      line-height: 44px;
+      padding: 3px 20px 3px 40px;
+      white-space: nowrap;
+      overflow: hidden;
+      -ms-text-overflow: ellipsis;
+      text-overflow: ellipsis;
+      cursor: pointer;
+      position: relative;
+        i {
+          position: absolute;
+          left: 6px;
+          top: 0;
+          display: block;
+          overflow: hidden;
+          width: 32px;
+          height: 50px;
+          line-height: 49px;
+          text-align: center;
+        }
+    }
+    a:hover, span:hover {
+      background-color: #f5f5f5;
+      color: #262626;
+      text-decoration: none;
+    }
+  }
+  &-scrollbar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 4px;
+    height: 0;
+    background: #000;
+    display: none;
+    box-sizing: border-box;
+    opacity: .1;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    z-index: 20000;
+    -webkit-transition: opacity 0.2s ease 0s;
+    -o-transition: opacity 0.2s ease 0s;
+    transition: opacity 0.2s ease 0s;
+    &:hover {
+      //width: 10px;
+    }
+  }
+  &:hover {
+    #{$namespace}-scrollbar {
+      opacity: .4;
+    }
+  }
+}

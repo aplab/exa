@@ -1,0 +1,59 @@
+{% extends ('@AplabAdmin/index.html.twig') %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('/static/cms/vendor.css') }}">
+    <link rel="stylesheet" href="{{ asset('/static/cms/build.css') }}">
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('static/cms/build.js') }}"></script>
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\MenuController::mainMenu'
+    )) }}
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\MenuController::actionMenu'
+    )) }}
+    {{ render(controller(
+        'Aplab\\AplabAdminBundle\\Controller\\MenuController::toolbar'
+    )) }}
+
+    {% for label, messages in app.flashes %}
+        {% for message in messages %}
+            <script>alert('{{ label }}: {{ message|e('js') }}');</script>
+        {% endfor %}
+    {% endfor %}
+
+{% endblock %}
+{% block body_classes %}{{ UiDataTransmitter.getBodyClasses() }}{% endblock %}
+{% block body %}
+    <div id="aplab-admin-sidebar">
+        {% block sidebar %}
+            <div id="aplab-admin-sidebar-buttons">
+                <button id="aplab-admin-sidebar-button-close">
+                    <i class="fas fa-times"></i>
+                </button>
+                <button id="aplab-admin-sidebar-button-toggle-pin">
+                    <i class="fas fa-thumbtack"></i>
+                </button>
+            </div>
+        {% endblock %}
+        <div id="apl-admin-main-menu-wrapper"></div>
+    </div>
+    <div id="aplab-admin-content">
+        {% block content %}
+            <div id="aplab-admin-navbar">
+                {% block navbar %}
+                    <button id="aplab-admin-open-sidebar">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <button id="aplab-admin-open-action-menu">
+                        <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div id="aplab-admin-toolbar-wrapper"></div>
+                {% endblock %}
+            </div>
+            <div id="aplab-admin-workarea">
+                {% block workarea %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
+{% endblock %}

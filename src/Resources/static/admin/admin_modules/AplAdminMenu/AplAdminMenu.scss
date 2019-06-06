@@ -1,0 +1,114 @@
+$main-menu-background-color: #3a3a3a;
+$main-menu-hover-background-color: #494949;
+$main-menu-current-background-color: #323232;
+.apl-admin-menu {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: $main-menu-background-color none repeat scroll 0 0;
+    overflow: hidden;
+    min-width: 100px;
+    font-size: 14px;
+    >li {
+        //border-bottom: 1px solid #252830;
+    }
+    >li:first-child {
+        border-top: 0;
+    }
+    li.open {
+        >span {
+            color: #fff;
+        }
+    }
+    li {
+        margin: 0;
+        padding: 0;
+        display: block;
+        position: relative;
+        >span, >a {
+            //font-weight: 400;
+            padding: 15px 30px 15px 50px;
+            display: block;
+            overflow: hidden;
+            -ms-text-overflow: ellipsis;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            color: #fff;
+            cursor: pointer;
+            position: relative;
+            line-height: 20px;
+        }
+        >span:hover, >span:active {
+            color: #fff;
+            background: $main-menu-hover-background-color;
+        }
+        >a:hover, >a:active {
+            color: #fff;
+            background: $main-menu-hover-background-color;
+        }
+        a {
+            text-decoration: none !important;
+        }
+        i {
+            position: absolute;
+            font-size: 18px;
+            //color: inherit;
+            left: 8px;
+            top: 8px;
+            width: 34px;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            overflow: hidden;
+        }
+        i.fa-chevron-down {
+            right: 8px;
+            top: 8px;
+            width: 34px;
+            height: 34px;
+            text-align: center;
+            line-height: 34px;
+            overflow: hidden;
+            left: auto;
+            font-size: 14px;
+        }
+        i.fa-chevron-down.trans {
+            -webkit-transition: all 0.2s ease 0s;
+            -o-transition: all 0.2s ease 0s;
+            transition: all 0.2s ease 0s;
+        }
+    }
+    li.open {
+        background: $main-menu-current-background-color;
+        > span > i.fa-chevron-down {
+            -webkit-transform: rotate(179deg);
+            -ms-transform: rotate(179deg);
+            -o-transform: rotate(179deg);
+            transform: rotate(179deg);
+        }
+    }
+    ul {
+        margin: 0;
+        padding: 0;
+    }
+}
+.apl-admin-submenu {
+    display: none;
+    font-size: 12px;
+    a,span {
+        font-weight: 400!important;
+    }
+    i {
+        font-size: 14px!important;
+    }
+}
+.apl-admin-submenu .apl-admin-submenu {
+    font-size: 12px;
+    a,span {
+        font-weight: 400!important;
+    }
+    i {
+        font-size: 14px!important;
+    }
+}
