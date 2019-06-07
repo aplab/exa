@@ -5,24 +5,134 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
+    aplab_admin_public_dir: '%kernel.project_dir%/www/'
+    aplab_admin_data_dir: '%kernel.project_dir%/var/aplab-admin/data/'
+    aplab_admin_local_storage_path: '%kernel.project_dir%/www/aplab/filestorage/'
 
 services:
     # default configuration for services in *this* file
     _defaults:
         autowire: true      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
+        public: false       # Allows optimizing the container by removing unused services; this also means
+                            # fetching services directly from the container via $container->get() won't work.
+                            # The best practice is to be explicit about your dependencies anyway.
 
     # makes classes in src/ available to be used as services
     # this creates a service per class whose id is the fully-qualified class name
-    App\:
-        resource: '../src/*'
-        exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+    #App\:
+    #     resource: '../src/*'
+    #     #exclude: '../src/{DependencyInjection,Entity,Migrations,Tests,Kernel.php}'
+    #     exclude: '../src/{Resources,DependencyInjection,Entity,Migrations,Tests,Kernel.php,MysqliManager,Tools,BusinessObject}'
+
+    App\MysqliManager\MysqliManager:
+        arguments: ['@kernel']
+
+    App\Util\:
+        resource: '../src/Util'
+        # exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Component}'
+        # exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Component}'
+
+    App\Service\:
+        resource: '../src/Service'
+
+    App\Repository\:
+        resource: '../src/Repository'
+        autowire: true
+        tags: ['doctrine.repository_service']
+
+    App\Component\Menu\MenuManager:
+        arguments:
+            # $structure_location: ~
+            $structure_location: '%kernel.project_dir%/config/menu_structure_default.json'
+
+    App\Component\ActionMenu\ActionMenuManager:
+        arguments: ['@router.default']
+
+    App\Component\Toolbar\ToolbarManager:
+        arguments: ['@router.default']
+
+    App\Component\ModuleMetadata\ModuleMetadataRepository:
+        arguments: ['@cache.app.simple', '@annotations.reader']
+
+    App\Component\DataTableRepresentation\DataTableRepresentation:
+        arguments:
+            - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
+            - '@doctrine.orm.entity_manager'
+
+    App\Component\DataTableRepresentation\DataTableRepresentationTreeMod:
+        arguments:
+            - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
+            - '@doctrine.orm.entity_manager'
+
+    App\Component\SystemState\SystemStateManager:
+        arguments:
+            $aplab_admin_data_dir: '%aplab_admin_data_dir%'
+
+    #    aplab_admin.system_state_manager:
+    #        class: App\Component\SystemState\SystemStateManager
+    #        autowire: true
+    #        arguments:
+    #            $aplab_admin_data_dir: '%aplab_admin_data_dir%'
+
+    App\Component\Helper\AdminControllerHelper:
+        arguments:
+            - '@App\Component\Menu\MenuManager'
+            - '@App\Component\ActionMenu\ActionMenuManager'
+            - '@App\Component\Toolbar\ToolbarManager'
 
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+    # App\PublicController\:
+    #     resource: '../src/PublicController'
+    #     tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    #    CapsuleCmsUiDataTransmitter:
+    #        class: Capsule\Util\CapsuleCmsUiDataTransmitter
+    #
+
+    App\EventListener\TerminateListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.terminate }
+
+
+    #    aplab_aplab_admin.event_listener.terminate_listener:
+    #        class: App\EventListener\TerminateListener
+    #        arguments: ['@aplab_admin.system_state_manager', '@?']
+
+    aplab_admin.instatce_editor_manager:
+        class: App\Component\InstanceEditor\InstatceEditorManager
+        public: true
+        arguments: ~
+
+    App\Component\InstanceEditor\InstatceEditorManager: '@aplab_admin.instatce_editor_manager'
+
+    #            - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
+    #            - '@doctrine.orm.entity_manager'
+
+    aplab_aplab_admin.security.login_form_authenticator:
+        class: App\Security\LoginFormAuthenticator
+        autowire: true
+
+
+    aplab_aplab_admin.doctrine.hash_password_listener:
+        class: App\Doctrine\HashPasswordListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    aplab_aplab_admin.local_storage:
+        class: App\Component\FileStorage\LocalStorage
+        arguments:
+            - {$file_storage_path: '%aplab_admin_local_storage_path%'}
+            - {$public_dir: '%aplab_admin_public_dir%'}
+
+    App\Component\FileStorage\LocalStorage: '@aplab_aplab_admin.local_storage'
+
+
