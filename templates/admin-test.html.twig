@@ -6,13 +6,13 @@
 {% block javascripts %}
     <script src="{{ asset('static/cms/build.js') }}"></script>
     {{ render(controller(
-        'Aplab\\AplabAdminBundle\\Controller\\MenuController::mainMenu'
+        'App\\Controller\\MenuController::mainMenu'
     )) }}
     {{ render(controller(
-        'Aplab\\AplabAdminBundle\\Controller\\MenuController::actionMenu'
+        'App\\Controller\\MenuController::actionMenu'
     )) }}
     {{ render(controller(
-        'Aplab\\AplabAdminBundle\\Controller\\MenuController::toolbar'
+        'App\\Controller\\MenuController::toolbar'
     )) }}
 {% endblock %}
 {% block body_classes %}{{ UiDataTransmitter.getBodyClasses() }}{% endblock %}

@@ -26,7 +26,7 @@ class MenuController extends AbstractController
     {
         $menu = $manager->getMenu('MainMenu');
         return $this->render(
-            '@AplabAdmin/main-menu.html.twig', [
+            'main-menu.html.twig', [
                 'json' => $menu->__toJson()
             ]
         );
@@ -41,7 +41,7 @@ class MenuController extends AbstractController
     {
         $menu = $manager->getInstance();
         return $this->render(
-            '@AplabAdmin/action-menu.html.twig', [
+            'action-menu.html.twig', [
                 'json' => $menu->__toJson()
             ]
         );
@@ -56,7 +56,7 @@ class MenuController extends AbstractController
     {
         $menu = $manager->getInstance();
         return $this->render(
-            '@AplabAdmin/toolbar.html.twig', [
+            'toolbar.html.twig', [
                 'json' => $menu->__toJson()
             ]
         );

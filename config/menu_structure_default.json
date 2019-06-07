@@ -1,0 +1,106 @@
+{
+    "MainMenu": {
+        "items": [
+            {
+                "id": "home",
+                "name": "Home",
+                "icon": "fas fa-home",
+                "disabled": false,
+                "target": "_self",
+                "route": "admin_desktop"
+            },
+            {
+                "id": "named-timestampable",
+                "name": "Named timestampable",
+                "icon": "fas fa-clock",
+                "disabled": false,
+                "target": "_self",
+                "route": "admin_named_timestampable_list"
+            },
+            {
+                "id": "fields-example",
+                "name": "Fields example",
+                "icon": "fas fa-flask",
+                "disabled": false,
+                "target": "_self",
+                "route": "admin_fields_example_list"
+            },
+            {
+                "id": "system-user",
+                "name": "System user",
+                "icon": "fas fa-users-cog",
+                "disabled": false,
+                "target": "_self",
+                "route": "admin_system_user_list"
+            },
+            {
+                "name": "Files",
+                "icon": "fas fa-file-upload",
+                "items": [
+                    {
+                        "name": "Upload images",
+                        "icon": "far fa-images",
+                        "handler": "AplabAdmin.showImageUploader()"
+                    },
+                    {
+                        "name": "Images history",
+                        "icon": "fas fa-history",
+                        "handler": "AplAdminImageHistory.getInstance().showWindow()"
+                    },
+                    {
+                        "name": "Favorite images",
+                        "icon": "far fa-star",
+                        "handler": "AplAdminImageHistory.getInstance().showWindow({favorites: true})"
+                    },
+                    {
+                        "id": "user-files",
+                        "name": "User files",
+                        "icon": "fas fa-file-upload",
+                        "disabled": false,
+                        "target": "_self",
+                        "route": "admin_user_files_list"
+                    }
+                ]
+            },
+            {
+                "name": "Bind",
+                "icon": "fas fa-box-open",
+                "items": [
+                    {
+                        "id": "container",
+                        "name": "Container",
+                        "icon": "fas fa-box-open",
+                        "disabled": false,
+                        "target": "_self",
+                        "route": "admin_bind_container_list"
+                    },
+                    {
+                        "id": "contained",
+                        "name": "Contained",
+                        "icon": "fas fa-boxes",
+                        "disabled": false,
+                        "target": "_self",
+                        "route": "admin_bind_contained_list"
+                    }
+                ]
+            },
+            {
+                "id": "tree",
+                "name": "Tree",
+                "icon": "fas fa-tree",
+                "disabled": false,
+                "target": "_self",
+                "route": "admin_tree_list"
+            },
+            {
+                "id": "test",
+                "name": "Test",
+                "icon": "fas fa-vial",
+                "disabled": false,
+                "target": "_self",
+                "class": "additional-css-class",
+                "route": "admin_test"
+            }
+        ]
+    }
+}

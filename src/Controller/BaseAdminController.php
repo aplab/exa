@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Component\Helper\AdminControllerHelper;
+use ReflectionClass;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -42,7 +43,7 @@ abstract class BaseAdminController extends AbstractController
             throw new \LogicException(get_class($this) . ' must have a protected $entityClassName = Entity::class');
         }
         $reader = $adminControllerHelper->getAnnotationsReader();
-        $this->routeAnnotation = $reader->getClassAnnotation(new \ReflectionClass(static::class), Route::class);
+        $this->routeAnnotation = $reader->getClassAnnotation(new ReflectionClass(static::class), Route::class);
     }
 
     /**

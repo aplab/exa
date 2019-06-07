@@ -9,6 +9,7 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -20,10 +21,10 @@ class AdminController extends AbstractController
 {
     /**
      * @Route("/", name="desktop")
-     * @return \Symfony\Component\HttpFoundation\Response
+     * @return Response
      */
     public function desktop() {
         //$this->addFlash('notice', 'test message');
-        return $this->render('@AplabAdmin/admin.html.twig', get_defined_vars());
+        return $this->render('admin.html.twig', get_defined_vars());
     }
 }

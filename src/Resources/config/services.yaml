@@ -22,19 +22,19 @@ services:
     # this creates a service per class whose id is the fully-qualified class name
 
     #App\:
-    #    resource: '../../*'
-    #    exclude: '../../{Entity,Migrations,Tests,Kernel.php,Component,Util}'
+    #    resource: '../src/*'
+    #    exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Component,Util}'
 
     App\Util\:
-        resource: '../../Util'
-#        exclude: '../../{Entity,Migrations,Tests,Kernel.php,Component}'
-#        exclude: '../../{Entity,Migrations,Tests,Kernel.php,Component}'
+        resource: '../src/Util'
+#        exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Component}'
+#        exclude: '../src/{Entity,Migrations,Tests,Kernel.php,Component}'
 
     App\Service\:
-        resource: '../../Service'
+        resource: '../src/Service'
 
     App\Repository\:
-        resource: '../../Repository'
+        resource: '../src/Repository'
         autowire: true
         tags: ['doctrine.repository_service']
 
@@ -80,7 +80,7 @@ services:
     # controllers are imported separately to make sure services can be injected
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
-        resource: '../../Controller'
+        resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed
