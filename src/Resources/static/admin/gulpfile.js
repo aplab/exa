@@ -22,7 +22,7 @@ const gulp = require('gulp'),
     plumber = require('gulp-plumber')
 ;
 var pkg = require('./package.json');
-var dest_dir = '../../../../../../../public/static/cms';
+var dest_dir = '../../../../public/static';
 
 gulp.task('scss-dev', function () {
     return gulp.src([

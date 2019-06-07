@@ -1,4 +1,4 @@
-{% extends ('@AplabAdmin/admin.html.twig') %}
+{% extends ('@admin.html.twig') %}
 {% block javascripts %}
     {{ parent() }}
     <script>
@@ -6,8 +6,8 @@
             new AplInstanceEditor($('#apl-instance-editor'));
         });
     </script>
-    <script src="{{ asset('/static/cms/ckeditor/ckeditor.js') }}"></script>
-    <script src="{{ asset('/static/cms/ckeditor/adapters/jquery.js') }}"></script>
+    <script src="{{ asset('/static/ckeditor/ckeditor.js') }}"></script>
+    <script src="{{ asset('/static/ckeditor/adapters/jquery.js') }}"></script>
 {% endblock %}
 {% block workarea %}
     {% set prefix = 'apl-instance-editor' %}
