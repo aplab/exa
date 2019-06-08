@@ -15,9 +15,11 @@
 }
 .sf-toolbarreset {
     bottom: -13px!important;
+    transition: bottom 0.2s ease 0s;
 }
 .sf-toolbarreset:hover {
     bottom: 0!important;
+    transition: bottom 0.2s ease 0s;
 }
 
 .bootstrap-datetimepicker-widget * {

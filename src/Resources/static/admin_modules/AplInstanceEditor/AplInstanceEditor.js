@@ -218,7 +218,9 @@ function AplInstanceEditor(container) {
             config.removePlugins = 'about,maximize';
             config.height = 10000;
             config.allowedContent = true;
+            config.image_prefillDimensions = false;
         };
+
     }
 
     /**
@@ -307,6 +309,7 @@ function AplInstanceEditor(container) {
         config.format_tags = 'p;h1;h2;h3;pre';
         config.defaultLanguage = 'en';
         config.language = 'en';
+        config.image_prefillDimensions = false;
         // Simplify the dialog windows.
         // config.removeDialogTabs = 'image:advanced;link:advanced';
         if (is_small()) {
