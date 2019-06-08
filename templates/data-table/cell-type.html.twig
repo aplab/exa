@@ -40,12 +40,12 @@
 {% endblock %}
 {% block tree %}
     <div class="w{{ cell_item.width }} text-nowrap">
-        <span class="text-info">{{ cell_item.type.getPrefix(item)|raw }}</span>{{ cell_item.type.getValue(item) }}
+        <span class="text-info">{{ cell_item.type.getPrefix(item)|raw }}</span>{{ cell_item.type.getValue(item)|default('<span class="text-muted">empty</span>')|raw }}
     </div>
 {% endblock %}
 {% block text %}
     <div class="w{{ cell_item.width }}">
-        {{ cell_item.type.getValue(item) }}
+        {{ cell_item.type.getValue(item)|default('<span class="text-muted">empty</span>')|raw }}
     </div>
 {% endblock %}
 {% block image %}
@@ -53,7 +53,7 @@
 {% endblock %}
 {% block rtext %}
     <div class="w{{ cell_item.width }} text-right">
-        {{ cell_item.type.getValue(item) }}
+        {{ cell_item.type.getValue(item)|default('<span class="text-muted">empty</span>')|raw }}
     </div>
 {% endblock %}
 {% block editid %}
