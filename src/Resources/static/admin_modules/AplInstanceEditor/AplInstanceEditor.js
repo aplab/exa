@@ -210,7 +210,8 @@ function AplInstanceEditor(container) {
          */
         CKEDITOR.editorConfig = function (config) {
             // Define changes to default configuration here. For example:
-            // config.language = 'fr';
+            config.language = 'en';
+            config.defaultLanguage = 'en';
             config.uiColor = 'f2f1f0';
             config.resize_enabled = false;
             config.toolbarCanCollapse = true;
@@ -304,6 +305,8 @@ function AplInstanceEditor(container) {
         // http://docs.ckeditor.com/#!/api/CKEDITOR.config
         // Set the most common block elements.
         config.format_tags = 'p;h1;h2;h3;pre';
+        config.defaultLanguage = 'en';
+        config.language = 'en';
         // Simplify the dialog windows.
         // config.removeDialogTabs = 'image:advanced;link:advanced';
         if (is_small()) {
