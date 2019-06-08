@@ -95,6 +95,8 @@ gulp.task('scripts-dev', function () {
             './node_modules/screenfull/dist/screenfull.js',
             './node_modules/clipboard/dist/clipboard.min.js',
             './node_modules/moment/min/moment.min.js',
+            './node_modules/blueimp-md5/js/md5.min.js',
+            './node_modules/jquery.resizeend/lib/jquery.resizeend.js',
             './node_modules/tempusdominus-bootstrap-4/build/js/tempusdominus-bootstrap-4.js',
             './admin_modules/AplAdminMenu/AplAdminMenu.js',
             './admin_modules/AplDataTable/AplDataTable.js',
