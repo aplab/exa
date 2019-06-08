@@ -10,17 +10,20 @@ namespace App\Controller;
 
 
 use App\Form\LoginForm;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-class AdminSecurityController extends Controller
+class AdminSecurityController extends AbstractController
 {
     /**
      * @Route("/admin/login", name="security_login")
+     * @param AuthenticationUtils $authenticationUtils
+     * @return Response
      */
-    public function loginAction()
+    public function loginAction(AuthenticationUtils $authenticationUtils)
     {
-        $authenticationUtils = $this->get('security.authentication_utils');
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user

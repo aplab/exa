@@ -1,11 +1,12 @@
 security:
     encoders:
-        App\Entity\User:
+        App\Entity\SystemUser:
             algorithm: auto
+
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         our_users:
-            entity: { class: \App\Entity\SystemUser, property: username }
+            entity: { class: App\Entity\SystemUser, property: username }
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs

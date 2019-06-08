@@ -41,10 +41,7 @@ gulp.task('scss-dev', function () {
         .pipe(sourcemaps.init())
         .pipe(sass())
         .pipe(replace('../fonts/', ''))
-        .pipe(autoprefixer({
-            browsers: ['last 3 versions'],
-            cascade: false
-        }))
+        .pipe(autoprefixer())
         .pipe(cssnano({discardUnused: {fontFace: false},zindex: false}))
         .pipe(concat('build.css'))
         .pipe(sourcemaps.write('./'))
@@ -79,10 +76,7 @@ gulp.task('css-dev', function () {
         // .pipe(replace('../../fonts/OpenSans', 'fonts/OpenSans'))
         .pipe(replace('../../fonts/roboto', 'fonts/roboto'))
         .pipe(replace('../webfonts/fa-', 'webfonts/fa-'))
-        .pipe(autoprefixer({
-            browsers: ['last 3 versions'],
-            cascade: false
-        }))
+        .pipe(autoprefixer())
         .pipe(cssnano({discardUnused: {fontFace: false},zindex: false}))
         .pipe(concat('vendor.css'))
         .pipe(sourcemaps.write('./'))
