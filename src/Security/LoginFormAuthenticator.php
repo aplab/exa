@@ -22,8 +22,11 @@ use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoder;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Core\Exception\InvalidCsrfTokenException;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\UserProviderInterface;
+use Symfony\Component\Security\Csrf\CsrfToken;
+use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
@@ -49,19 +52,27 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
     private $passwordEncoder;
 
     /**
+     * @var CsrfTokenManagerInterface
+     */
+    private $csrfTokenManager;
+
+    /**
      * LoginFormAuthenticator constructor.
      * @param FormFactoryInterface $formFactory
      * @param EntityManagerInterface $entityManager
      * @param RouterInterface $router
      * @param UserPasswordEncoderInterface $passwordEncoder
+     * @param CsrfTokenManagerInterface $csrfTokenManager
      */
     public function __construct(FormFactoryInterface $formFactory, EntityManagerInterface $entityManager,
-                                RouterInterface $router, UserPasswordEncoderInterface $passwordEncoder)
+                                RouterInterface $router, UserPasswordEncoderInterface $passwordEncoder,
+                                CsrfTokenManagerInterface $csrfTokenManager)
     {
         $this->formFactory = $formFactory;
         $this->entityManager = $entityManager;
         $this->router = $router;
         $this->passwordEncoder = $passwordEncoder;
+        $this->csrfTokenManager = $csrfTokenManager;
     }
 
     /**
@@ -116,6 +127,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         $form = $this->formFactory->create(LoginForm::class);
         $form->handleRequest($request);
         $data = $form->getData();
+        $data['csrf_token'] = $request->request->get('_csrf_token');
         return $data;
     }
 
@@ -136,6 +148,10 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function getUser($credentials, UserProviderInterface $userProvider)
     {
+        $token = new CsrfToken('authenticate', $credentials['csrf_token']);
+        if (!$this->csrfTokenManager->isTokenValid($token)) {
+            throw new InvalidCsrfTokenException;
+        }
         $username = $credentials['_username'];
         return $this->entityManager->getRepository(SystemUser::class)->findOneBy([
             'username' => $username
