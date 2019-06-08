@@ -43,45 +43,56 @@ function AplInstanceEditor(container) {
     var tabs_width = [];
     var tabs_scroll = [];
     var tabs_width_sum = 0;
+    var local_storage_key = class_prefix + md5(window.location);
+    var default_tab_index = 0;
+    var default_tabs_wrapper_scroll = 0;
 
-    /**
-     * Initialization
-     */
-    var init = function () {
-        var tabs_width_sum_tmp = 0;
-        var found_tab = tabs.find(prefix + 'tab');
-        found_tab.each(function (i, o) {
-            tabs_width[i] = $(o).outerWidth(true);
-            tabs_scroll[i] = tabs_width_sum_tmp;
-            tabs_width_sum_tmp += tabs_width[i];
-        });
-        if (!tabs_width_sum) {
-            found_tab.removeClass(class_prefix + 'tab-active').eq(0).addClass(class_prefix + 'tab-active');
+    var loadState = function () {
+        var raw = localStorage.getItem(local_storage_key);
+        var json = JSON.parse(raw);
+        try {
+            var i = parseInt(json.i);
+            if (isNaN(i)) {
+                default_tab_index = 0;
+            } else {
+                default_tab_index = i;
+            }
+            var s = parseInt(json.s);
+            if (isNaN(s)) {
+                default_tabs_wrapper_scroll = 0;
+            } else {
+                default_tabs_wrapper_scroll = s;
+            }
+        } catch (err) {
+            console.log(err)
         }
-        tabs_width_sum_tmp += .3;
-        if (!tabs_width_sum) {
-            // first run only
-            body.find(prefix + 'panel')
-                .removeClass(class_prefix + 'panel-active')
-                .eq(0).addClass(class_prefix + 'panel-active');
-        }
-        tabs.css({
-            width: tabs_width_sum_tmp
-        });
-        tabs_width_sum = tabs_width_sum_tmp;
     };
 
+    var saveState = function () {
+        localStorage.setItem(local_storage_key, JSON.stringify({
+            i: default_tab_index,
+            s: default_tabs_wrapper_scroll,
+        }));
+    };
+
+    loadState();
+
     /**
-     * Width initialization
+     * Calculate width
      */
-    var initWidth = function () {
+    var recalcWidth = function () {
         if (head.width() < tabs_width_sum) {
-            arrow_left.show();
-            arrow_right.show();
-            // tabs_wrapper.css({
-            //     left: 30,
-            //     right: 30
-            // });
+            if (tabs_wrapper.scrollLeft() < 1) {
+                arrow_left.hide();
+            } else {
+                arrow_left.show();
+            }
+            var check = head.width() + tabs_wrapper.scrollLeft();
+            if ((tabs_width_sum - check) < 1) {
+                arrow_right.hide();
+            } else {
+                arrow_right.show();
+            }
         } else {
             arrow_left.hide();
             arrow_right.hide();
@@ -93,22 +104,71 @@ function AplInstanceEditor(container) {
     };
 
     /**
+     * Initialization
+     */
+    var init = function () {
+        tabs_wrapper.scrollLeft(default_tabs_wrapper_scroll);
+        var tabs_width_sum_tmp = 0;
+        var found_tab = tabs.find(prefix + 'tab');
+        if (default_tab_index > found_tab.length) {
+            default_tab_index = 0;
+        }
+        found_tab.each(function (i, o) {
+            tabs_width[i] = $(o).outerWidth(true);
+            tabs_scroll[i] = tabs_width_sum_tmp;
+            tabs_width_sum_tmp += tabs_width[i];
+        });
+        if (!tabs_width_sum) {
+            found_tab.removeClass(class_prefix + 'tab-active')
+                .eq(default_tab_index).addClass(class_prefix + 'tab-active');
+        }
+        tabs_width_sum_tmp += .3;
+        if (!tabs_width_sum) {
+            // first run only
+            body.find(prefix + 'panel')
+                .removeClass(class_prefix + 'panel-active')
+                .eq(default_tab_index).addClass(class_prefix + 'panel-active');
+        }
+        tabs.css({
+            width: tabs_width_sum_tmp
+        });
+        tabs_width_sum = tabs_width_sum_tmp;
+        recalcWidth();
+    };
+
+    /**
      * Window resize handler
      */
     $(window).resize(function () {
-        initWidth();
+        tabs_wrapper.scrollLeft(tabs_scroll[default_tab_index] - (tabs_wrapper.width() - tabs_width[default_tab_index]) / 2);
+        default_tabs_wrapper_scroll = tabs_wrapper.scrollLeft();
     });
 
+    /**
+     * Window resizeend handler
+     */
+    $(window).on('resizeend', function () {
+        recalcWidth();
+        saveState();
+    });
+
+    /**
+     * Tabs click handler
+     */
     tabs.find(prefix + 'tab').click(function () {
         var all = tabs.find(prefix + 'tab');
         $(this).addClass(class_prefix + 'tab-active');
         all.not(this).removeClass(class_prefix + 'tab-active');
         var index = all.index(this);
-        // пытаемся проскроллить так, чтобы выбранная вкладка оказалась посередине
+        default_tab_index = index;
+        // trying to scroll tabs wrapper so that the selected tab is in the center
         tabs_wrapper.scrollLeft(tabs_scroll[index] - (tabs_wrapper.width() - tabs_width[index]) / 2);
+        default_tabs_wrapper_scroll = tabs_wrapper.scrollLeft();
         body.find(prefix + 'panel')
             .removeClass(class_prefix + 'panel-active')
             .eq(index).addClass(class_prefix + 'panel-active');
+        saveState();
+        recalcWidth();
     });
 
     /**
@@ -116,6 +176,9 @@ function AplInstanceEditor(container) {
      */
     arrow_left.click(function () {
         tabs_wrapper.scrollLeft(tabs_wrapper.scrollLeft() - 50);
+        default_tabs_wrapper_scroll = tabs_wrapper.scrollLeft();
+        recalcWidth();
+        saveState();
     });
 
     /**
@@ -123,18 +186,21 @@ function AplInstanceEditor(container) {
      */
     arrow_right.click(function () {
         tabs_wrapper.scrollLeft(tabs_wrapper.scrollLeft() + 50);
+        default_tabs_wrapper_scroll = tabs_wrapper.scrollLeft();
+        recalcWidth();
+        saveState();
     });
 
     // workaround
     (function() {
-        for (var i = 0; i < 100; i++) {
+        for (var i = 0; i < 100; i += 10) {
             setTimeout(function () {
                 init();
             }, (100 + i) * i);
         }
     })();
 
-    initWidth();
+    recalcWidth();
 
     if (typeof(CKEDITOR) != 'undefined') {
         /**
@@ -160,7 +226,6 @@ function AplInstanceEditor(container) {
     var fitEditors = function () {
         var height = body.height();
         var width = body.width();
-        console.log(width);
         for (var o in CKEDITOR.instances) {
             if (CKEDITOR.instances.hasOwnProperty(o)) {
                 CKEDITOR.instances[o].resize(width, height);
@@ -181,7 +246,7 @@ function AplInstanceEditor(container) {
                 fitEditors();
             }, (100 + i) * i);
         }
-    }
+    };
 
     /**
      * Init CKEditors

@@ -3,6 +3,8 @@ $active-color: #1ca8dd;
 $active-color: #28a745;
 $active-color: #007bff;
 $active-color: #17a2b8;
+$widththreshold: 768px;
+$widththreshold: 640px;
 .apl-instance-editor {
   position: absolute;
   left: 0;
@@ -194,16 +196,16 @@ $active-color: #17a2b8;
     padding-left: 15px;
     padding-right: 15px;
   }
-  @media (min-width: 768px) {
+  @media (min-width: $widththreshold) {
     &-label {
       float: left;
-      width: 768px / 12 * 3;
+      width: $widththreshold / 12 * 3;
       padding-top: 7px;
       margin-bottom: 0;
     }
     &-value {
       float: left;
-      width: calc(100% - 768px / 12 * 3);
+      width: calc(100% - #{$widththreshold} / 12 * 3);
     }
   }
   // custom checkbox
@@ -227,18 +229,18 @@ $active-color: #17a2b8;
     padding-top: 8px;
 
   }
-  @media (min-width: 768px) {
+  @media (min-width: $widththreshold) {
     &-label-checkbox {
       padding-left: 15px;
       float: left;
-      width: 768px / 12 * 3;
+      width: $widththreshold / 12 * 3;
     }
     &-value-checkbox {
       position: static;
       left: auto;
       top: auto;
       float: left;
-      width: calc(100% - 768px / 12 * 3);
+      width: calc(100% - #{$widththreshold} / 12 * 3);
     }
   }
   // end of custom checkbox
