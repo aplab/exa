@@ -40,7 +40,7 @@ abstract class ReferenceAdminController extends BaseAdminController
 
         $data_table = $data_table_representation->getDataTable($this->getEntityClassName());
         $pager = $data_table->getPager();
-        return $this->render('@AplabAdmin/data-table/data-table.html.twig', get_defined_vars());
+        return $this->render('data-table/data-table.html.twig', get_defined_vars());
     }
 
     /**
@@ -144,7 +144,7 @@ abstract class ReferenceAdminController extends BaseAdminController
         $entity_class_name = $this->getEntityClassName();
         $item = new $entity_class_name;
         $instance_editor = $instatceEditorManager->getInstanceEditor($item);
-        return $this->render('@AplabAdmin/instance-editor/instance-editor.html.twig', get_defined_vars());
+        return $this->render('instance-editor/instance-editor.html.twig', get_defined_vars());
     }
 
     /**
@@ -199,7 +199,7 @@ abstract class ReferenceAdminController extends BaseAdminController
             return $this->redirectToRoute($this->getRouteAnnotation()->getName() . 'list');
         }
         $instance_editor = $instance_editor_manager->getInstanceEditor($item);
-        return $this->render('@AplabAdmin/instance-editor/instance-editor.html.twig', get_defined_vars());
+        return $this->render('instance-editor/instance-editor.html.twig', get_defined_vars());
     }
 
     /**

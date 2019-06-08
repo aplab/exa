@@ -43,6 +43,6 @@ class UserFilesController extends ReferenceAdminController
 
         $data_table = $data_table_representation->getDataTable($this->getEntityClassName());
         $pager = $data_table->getPager();
-        return $this->render('@AplabAdmin/data-table/data-table.html.twig', get_defined_vars());
+        return $this->render('data-table/data-table.html.twig', get_defined_vars());
     }
 }

@@ -134,14 +134,14 @@ gulp.task('fonts', function () {
         .pipe(gulp.dest('./' + dest_dir));
 });
 
-gulp.task('img', function () {
-    var imgSrc = './site/**/*.{jpg,png,gif,svg}',
-        imgDst = '../www/capsule/static';
-    return gulp.src(imgSrc, {since: gulp.lastRun('img')})
-        .pipe(plumber())
-        .pipe(newer(imgDst))
-        .pipe(gulp.dest(imgDst));
-});
+// gulp.task('img', function () {
+//     var imgSrc = './site/**/*.{jpg,png,gif,svg}',
+//         imgDst = '../public/capsule/static';
+//     return gulp.src(imgSrc, {since: gulp.lastRun('img')})
+//         .pipe(plumber())
+//         .pipe(newer(imgDst))
+//         .pipe(gulp.dest(imgDst));
+// });
 
 gulp.task('watch', function () {
     gulp.watch('./stylesheet/*.scss', gulp.series('scss-dev'));

@@ -53,7 +53,7 @@
                         {% for item in data_table.items %}
                             <div class="wExt" data-pk="{{ data_table.helperIdentifierJson(item) }}">
                                 {% for cell_item in data_table.cell %}
-                                    {{ block(cell_item.type.type, "@AplabAdmin/data-table/cell-type.html.twig") }}
+                                    {{ block(cell_item.type.type, "data-table/cell-type.html.twig") }}
                                     {% set ___global_cell_counter = ___global_cell_counter + 1 %}
                                 {% endfor %}
                             </div>

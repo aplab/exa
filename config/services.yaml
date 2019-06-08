@@ -5,9 +5,9 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: 'en'
-    aplab_admin_public_dir: '%kernel.project_dir%/www/'
+    aplab_admin_public_dir: '%kernel.project_dir%/public/'
     aplab_admin_data_dir: '%kernel.project_dir%/var/aplab-admin/data/'
-    aplab_admin_local_storage_path: '%kernel.project_dir%/www/aplab/filestorage/'
+    aplab_admin_local_storage_path: '%kernel.project_dir%/public/aplab/filestorage/'
 
 services:
     # default configuration for services in *this* file

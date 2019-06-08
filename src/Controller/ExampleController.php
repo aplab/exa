@@ -49,6 +49,6 @@ class ExampleController extends AbstractController
 
 
 
-        return $this->render('@AplabAdmin/admin-test.html.twig', get_defined_vars());
+        return $this->render('admin-test.html.twig', get_defined_vars());
     }
 }

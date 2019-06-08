@@ -30,7 +30,7 @@ class AdminSecurityController extends Controller
         ]);
 
         return $this->render(
-            '@AplabAdmin/login.html.twig',
+            'login.html.twig',
             array(
                 'form' => $form->createView(),
                 'error' => $error,

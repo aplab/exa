@@ -32,13 +32,13 @@
                 <div class="{{ prefix }}-panel">
                     {% if tab.ckeditor %}
                         {% for field in tab.field %}
-                            {{ block(field.type.type, "@AplabAdmin/instance-editor/field-type.html.twig") }}
+                            {{ block(field.type.type, "instance-editor/field-type.html.twig") }}
                         {% endfor %}
                     {% else %}
                         <div class="{{ prefix }}-elements-wrapper">
                             <div class="{{ prefix }}-elements">
                                 {% for field in tab.field %}
-                                    {{ block(field.type.type, "@AplabAdmin/instance-editor/field-type.html.twig") }}
+                                    {{ block(field.type.type, "instance-editor/field-type.html.twig") }}
                                 {% endfor %}
                             </div>
                         </div>
