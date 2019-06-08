@@ -12,8 +12,12 @@ namespace App\Component\DataTableRepresentation;
 use App\Component\DataTableRepresentation\CellType\CellTypeFactory;
 use App\Component\DataTableRepresentation\Pager\Pager;
 use App\Component\ModuleMetadata\ModuleMetadata;
+use App\Component\SystemState\SystemState;
 use App\Util\CssWidthDefinition;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\SimpleCache\InvalidArgumentException;
+use ReflectionClass;
+use ReflectionException;
 
 class DataTable
 {
@@ -23,7 +27,7 @@ class DataTable
     protected $entityClassName;
 
     /**
-     * @var \ReflectionClass
+     * @var ReflectionClass
      */
     protected $entityReflectionClass;
 
@@ -48,7 +52,7 @@ class DataTable
     protected $cssWidthDefinition;
 
     /**
-     * @var \App\Component\SystemState\SystemState
+     * @var SystemState
      */
     protected $systemState;
 
@@ -84,12 +88,12 @@ class DataTable
 
     /**
      * DataTable constructor.
-     * @param \ReflectionClass $entity_reflection_class
+     * @param ReflectionClass $entity_reflection_class
      * @param DataTableRepresentation $data_table_representation
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
-    public function __construct(\ReflectionClass $entity_reflection_class,
+    public function __construct(ReflectionClass $entity_reflection_class,
                                 DataTableRepresentation $data_table_representation)
     {
         $this->entityReflectionClass = $entity_reflection_class;
@@ -200,9 +204,9 @@ class DataTable
     }
 
     /**
-     * @return \ReflectionClass
+     * @return ReflectionClass
      */
-    public function getEntityReflectionClass(): \ReflectionClass
+    public function getEntityReflectionClass(): ReflectionClass
     {
         return $this->entityReflectionClass;
     }
@@ -232,9 +236,9 @@ class DataTable
     }
 
     /**
-     * @return \App\Component\SystemState\SystemState
+     * @return SystemState
      */
-    public function getSystemState(): \App\Component\SystemState\SystemState
+    public function getSystemState(): SystemState
     {
         return $this->systemState;
     }

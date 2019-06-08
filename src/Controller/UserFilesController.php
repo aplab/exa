@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class UserFilesController
  * @package App\Controller
- * @Route("/admin/user-files", name="admin_user_files_")
+ * @Route("/user-files", name="admin_user_files_")
  */
 class UserFilesController extends ReferenceAdminController
 {

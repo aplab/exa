@@ -14,6 +14,7 @@ use App\Component\InstanceEditor\FieldType\FieldTypeInterface;
 use App\Component\ModuleMetadata\Options;
 use App\Component\ModuleMetadata\Property;
 use App\Component\ModuleMetadata\Widget;
+use ReflectionProperty;
 
 class InstanceEditorField
 {
@@ -75,12 +76,12 @@ class InstanceEditorField
     /**
      * InstanceEditorField constructor.
      * @param InstanceEditor $instance_editor
-     * @param \ReflectionProperty $property
+     * @param ReflectionProperty $property
      * @param Property $property_metadata
      * @param Widget $widget_metadata
      * @param FieldTypeFactory $factory
      */
-    public function __construct(InstanceEditor $instance_editor, \ReflectionProperty $property,
+    public function __construct(InstanceEditor $instance_editor, ReflectionProperty $property,
                                 Property $property_metadata, Widget $widget_metadata, FieldTypeFactory $factory)
     {
         $this->instanceEditor = $instance_editor;

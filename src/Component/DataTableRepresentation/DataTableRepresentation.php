@@ -13,6 +13,9 @@ use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use App\Component\SystemState\SystemStateManager;
 use App\Util\CssWidthDefinition;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\SimpleCache\InvalidArgumentException;
+use ReflectionClass;
+use ReflectionException;
 
 class DataTableRepresentation
 {
@@ -27,7 +30,7 @@ class DataTableRepresentation
     protected $entityManager;
 
     /**
-     * @var \ReflectionClass[]
+     * @var ReflectionClass[]
      */
     protected $entityReflectionClass = [];
 
@@ -86,12 +89,12 @@ class DataTableRepresentation
      * @param string $entity_class_name
      * @param null|string $type
      * @return DataTable
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     public function getDataTable(string $entity_class_name, ?string $type = null):DataTable
     {
-        $entity_reflection_class = new \ReflectionClass($entity_class_name);
+        $entity_reflection_class = new ReflectionClass($entity_class_name);
         $entity_class_name = $entity_reflection_class->getName();
         if (!isset($this->dataTable[$entity_class_name])) {
             $this->entityReflectionClass[$entity_class_name] = $entity_reflection_class;
@@ -113,7 +116,7 @@ class DataTableRepresentation
     }
 
     /**
-     * @return \ReflectionClass[]
+     * @return ReflectionClass[]
      */
     public function getEntityReflectionClass(): array
     {

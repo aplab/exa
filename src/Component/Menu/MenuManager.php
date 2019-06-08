@@ -10,6 +10,8 @@ namespace App\Component\Menu;
 
 
 use Psr\SimpleCache\CacheInterface;
+use Psr\SimpleCache\InvalidArgumentException;
+use RuntimeException;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 
 /**
@@ -106,7 +108,7 @@ class MenuManager
     /**
      * @return mixed
      * @throws Exception
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function getStructure()
     {
@@ -124,7 +126,7 @@ class MenuManager
      * @param $id
      * @return Menu
      * @throws Exception
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function getMenu($id = self::DEFAULT_ID)
     {
@@ -140,7 +142,7 @@ class MenuManager
         $json = file_get_contents($this->structureLocation);
         $data = json_decode($json, true);
         if (JSON_ERROR_NONE !== json_last_error()) {
-            throw new \RuntimeException(json_last_error_msg(), json_last_error());
+            throw new RuntimeException(json_last_error_msg(), json_last_error());
         }
         foreach ($data as $id => $menu_data) {
             $menu = new Menu($id);
@@ -224,7 +226,7 @@ class MenuManager
             return;
         }
         if (sizeof($action) > 1) {
-            throw new \RuntimeException('only one action can be defined');
+            throw new RuntimeException('only one action can be defined');
         }
         $item->setAction(reset($action));
     }

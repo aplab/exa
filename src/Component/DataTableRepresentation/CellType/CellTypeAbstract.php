@@ -10,6 +10,7 @@ namespace App\Component\DataTableRepresentation\CellType;
 
 
 use App\Component\DataTableRepresentation\DataTableCell;
+use LogicException;
 
 abstract class CellTypeAbstract implements CellTypeInterface
 {
@@ -68,7 +69,7 @@ abstract class CellTypeAbstract implements CellTypeInterface
                 return $entity->$accessor();
             }
         }
-        throw new \LogicException('Unable to access property ' . get_class($entity) . '::' . $property_name);
+        throw new LogicException('Unable to access property ' . get_class($entity) . '::' . $property_name);
     }
 
     /**

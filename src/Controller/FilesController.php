@@ -11,7 +11,7 @@ namespace App\Controller;
 
 use App\Entity\UserFiles\File;
 use App\Util\Path;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -19,7 +19,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class FilesController
  * @package App\Controller
  */
-class FilesController extends Controller
+class FilesController extends AbstractController
 {
     /**
      * @Route("/files/{id}/{name}",

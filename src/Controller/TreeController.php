@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class NamedTimestampableController
  * @package App\Controller
- * @Route("/admin/tree", name="admin_tree_")
+ * @Route("/tree", name="admin_tree_")
  */
 class TreeController extends ReferenceAdminController
 {

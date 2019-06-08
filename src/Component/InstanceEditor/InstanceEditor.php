@@ -10,8 +10,12 @@ namespace App\Component\InstanceEditor;
 
 
 use App\Component\InstanceEditor\FieldType\FieldTypeFactory;
+use App\Component\ModuleMetadata\ModuleMetadata;
 use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\ClassMetadata;
+use Psr\SimpleCache\InvalidArgumentException;
+use ReflectionException;
 use Symfony\Component\HttpFoundation\Request;
 
 class InstanceEditor
@@ -37,12 +41,12 @@ class InstanceEditor
     protected $entityManagerInterface;
 
     /**
-     * @var \App\Component\ModuleMetadata\ModuleMetadata
+     * @var ModuleMetadata
      */
     protected $moduleMetadata;
 
     /**
-     * @var \Doctrine\ORM\Mapping\ClassMetadata
+     * @var ClassMetadata
      */
     protected $classMetadata;
 
@@ -60,8 +64,8 @@ class InstanceEditor
      * InstanceEditor constructor.
      * @param object $entity
      * @param InstatceEditorManager $instance_editor_manager
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     public function __construct(object $entity, InstatceEditorManager $instance_editor_manager)
     {
@@ -205,17 +209,17 @@ class InstanceEditor
     }
 
     /**
-     * @return \App\Component\ModuleMetadata\ModuleMetadata
+     * @return ModuleMetadata
      */
-    public function getModuleMetadata(): \App\Component\ModuleMetadata\ModuleMetadata
+    public function getModuleMetadata(): ModuleMetadata
     {
         return $this->moduleMetadata;
     }
 
     /**
-     * @return \Doctrine\ORM\Mapping\ClassMetadata
+     * @return ClassMetadata
      */
-    public function getClassMetadata(): \Doctrine\ORM\Mapping\ClassMetadata
+    public function getClassMetadata(): ClassMetadata
     {
         return $this->classMetadata;
     }

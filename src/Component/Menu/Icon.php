@@ -9,8 +9,6 @@
 namespace App\Component\Menu;
 
 
-use http\Exception\RuntimeException;
-
 /**
  * Class Icon
  * @package App\Component\Menu

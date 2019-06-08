@@ -9,7 +9,7 @@
 namespace App\Entity\UserFiles;
 
 use App\Component\ModuleMetadata as ModuleMetadata;
-use App\Util\Path;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -30,7 +30,7 @@ class File
 {
     public function __construct()
     {
-        $this->createdAt = new \DateTime;
+        $this->createdAt = new DateTime;
     }
 
     /**

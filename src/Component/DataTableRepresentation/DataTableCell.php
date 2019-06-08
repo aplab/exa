@@ -14,6 +14,7 @@ use App\Component\DataTableRepresentation\CellType\CellTypeInterface;
 use App\Component\ModuleMetadata\Cell;
 use App\Component\ModuleMetadata\Options;
 use App\Component\ModuleMetadata\Property;
+use ReflectionProperty;
 
 class DataTableCell
 {
@@ -64,12 +65,12 @@ class DataTableCell
 
     /**
      * DataTableCell constructor.
-     * @param \ReflectionProperty $property
+     * @param ReflectionProperty $property
      * @param Property $property_metadata
      * @param Cell $cell_metadata
      * @param CellTypeFactory $factory
      */
-    public function __construct(\ReflectionProperty $property, Property $property_metadata,
+    public function __construct(ReflectionProperty $property, Property $property_metadata,
                                 Cell $cell_metadata, CellTypeFactory $factory)
     {
         $this->propertyName = $property->getName();

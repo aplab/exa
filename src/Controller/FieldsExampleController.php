@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class FieldsExampleController
  * @package App\Controller
- * @Route("/admin/fields-example", name="admin_fields_example_")
+ * @Route("/fields-example", name="admin_fields_example_")
  */
 class FieldsExampleController extends ReferenceAdminController
 {

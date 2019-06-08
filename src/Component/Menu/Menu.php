@@ -9,7 +9,9 @@
 namespace App\Component\Menu;
 
 
-class Menu implements \JsonSerializable
+use JsonSerializable;
+
+class Menu implements JsonSerializable
 {
     /**
      * @var static[]

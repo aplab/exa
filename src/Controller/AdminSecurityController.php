@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Form\LoginForm;
+use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -18,7 +19,7 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 class AdminSecurityController extends AbstractController
 {
     /**
-     * @Route("/admin/login", name="security_login")
+     * @Route("/login", name="security_login")
      * @param AuthenticationUtils $authenticationUtils
      * @return Response
      */
@@ -42,11 +43,11 @@ class AdminSecurityController extends AbstractController
     }
 
     /**
-     * @Route("/admin/logout", name="security_logout")
-     * @throws \Exception
+     * @Route("/logout", name="security_logout")
+     * @throws Exception
      */
     public function logoutAction()
     {
-        throw new \Exception('this should not be reached!');
+        throw new Exception('this should not be reached!');
     }
 }

@@ -9,12 +9,14 @@
 namespace App\Component\InstanceEditor\FieldType;
 
 
+use DateTime;
+
 class FieldTypeDateTimePicker extends FieldTypeAbstract
 {
     public function getValue()
     {
         /**
-         * @var \DateTime $value
+         * @var DateTime $value
          */
         $value = parent::getValue();
         if (!$value) {

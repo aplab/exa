@@ -11,6 +11,8 @@ namespace App\Component\InstanceEditor;
 
 use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\SimpleCache\InvalidArgumentException;
+use ReflectionException;
 
 class InstatceEditorManager
 {
@@ -39,8 +41,8 @@ class InstatceEditorManager
     /**
      * @param object $entity
      * @return InstanceEditor
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * @throws \ReflectionException
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
      */
     public function getInstanceEditor(object $entity): InstanceEditor
     {

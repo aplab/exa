@@ -9,10 +9,17 @@
 namespace App\Component\Helper;
 
 
+use App\Component\ActionMenu\ActionMenu;
 use App\Component\ActionMenu\ActionMenuManager;
+use App\Component\ActionMenu\Exception;
+use App\Component\Menu\Menu;
 use App\Component\Menu\MenuManager;
+use App\Component\Toolbar\Toolbar;
 use App\Component\Toolbar\ToolbarManager;
 use Doctrine\Common\Annotations\Reader;
+use Psr\SimpleCache\InvalidArgumentException;
+use RuntimeException;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
 class AdminControllerHelper
@@ -89,21 +96,21 @@ class AdminControllerHelper
 
     /**
      * @param null $id
-     * @return \App\Component\Menu\Menu
+     * @return Menu
      * @throws \App\Component\Menu\Exception
-     * @throws \Psr\SimpleCache\InvalidArgumentException
+     * @throws InvalidArgumentException
      */
     public function getMenu($id = null)
     {
         if (is_null($id)) {
             return $this->menuManager->getMenu();
         }
-        $this->menuManager->getMenu($id);
+        return $this->menuManager->getMenu($id);
     }
 
     /**
      * @param null $id
-     * @return \App\Component\Toolbar\Toolbar
+     * @return Toolbar
      * @throws \App\Component\Toolbar\Exception
      */
     public function getToolbar($id = null)
@@ -116,8 +123,8 @@ class AdminControllerHelper
 
     /**
      * @param null $id
-     * @return \App\Component\ActionMenu\ActionMenu
-     * @throws \App\Component\ActionMenu\Exception
+     * @return ActionMenu
+     * @throws Exception
      */
     public function getActionMenu($id = null)
     {
@@ -136,7 +143,7 @@ class AdminControllerHelper
     }
 
     /**
-     * @return null|\Symfony\Component\HttpFoundation\Request
+     * @return null|Request
      */
     public function getMasterRequest()
     {
@@ -153,8 +160,8 @@ class AdminControllerHelper
             $suffix = ltrim($suffix, '/');
         }
         $data = explode('/', '/' . trim($this->getMasterRequest()->getPathInfo(), '/'));
-        if (sizeof($data) < 3) {
-            throw new \RuntimeException('unable to get module path not from a module');
+        if (sizeof($data) < 2) {
+            throw new RuntimeException('unable to get module path not from a module');
         }
         $data = array_slice($data, 0, 3);
         if ($suffix) {
@@ -169,8 +176,8 @@ class AdminControllerHelper
     public function getBundlePath()
     {
         $data = explode('/', '/' . trim($this->getMasterRequest()->getPathInfo(), '/'));
-        if (sizeof($data) < 3) {
-            throw new \RuntimeException('unable to get bundle path not from a bundle');
+        if (sizeof($data) < 2) {
+            throw new RuntimeException('unable to get bundle path not from a bundle');
         }
         return join('/', array_slice($data, 0, 3));
     }

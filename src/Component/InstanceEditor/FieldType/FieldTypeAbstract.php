@@ -10,6 +10,7 @@ namespace App\Component\InstanceEditor\FieldType;
 
 
 use App\Component\InstanceEditor\InstanceEditorField;
+use LogicException;
 
 abstract class FieldTypeAbstract implements FieldTypeInterface
 {
@@ -60,7 +61,7 @@ abstract class FieldTypeAbstract implements FieldTypeInterface
                 return $entity->$accessor();
             }
         }
-        throw new \LogicException('Unable to access property ' . get_class($entity) . '::' . $property_name);
+        throw new LogicException('Unable to access property ' . get_class($entity) . '::' . $property_name);
     }
 
     /**

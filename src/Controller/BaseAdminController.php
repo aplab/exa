@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Component\Helper\AdminControllerHelper;
 use ReflectionClass;
+use ReflectionException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -34,7 +35,7 @@ abstract class BaseAdminController extends AbstractController
     /**
      * BaseAdminController constructor.
      * @param AdminControllerHelper $adminControllerHelper
-     * @throws \ReflectionException
+     * @throws ReflectionException
      */
     final public function __construct(AdminControllerHelper $adminControllerHelper)
     {

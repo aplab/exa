@@ -10,6 +10,7 @@ namespace App\Component\InstanceEditor\FieldType;
 
 
 use App\Component\InstanceEditor\InstanceEditorField;
+use LogicException;
 
 class FieldTypeEntity extends FieldTypeAbstract
 {
@@ -36,7 +37,7 @@ class FieldTypeEntity extends FieldTypeAbstract
                 return $entity->$accessor();
             }
         }
-        throw new \LogicException('Unable to access property ' . get_class($entity) . '::' . $property_name);
+        throw new LogicException('Unable to access property ' . get_class($entity) . '::' . $property_name);
     }
 
     public function getOptionsDataList()

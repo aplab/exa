@@ -2,9 +2,12 @@
 
 namespace App\Entity\AdjacencyList;
 
+use DateTime;
+use DateTimeInterface;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use LogicException;
 use Symfony\Component\Validator\Constraints as Assert;
 use App\Component\ModuleMetadata as ModuleMetadata;
 
@@ -81,6 +84,8 @@ class ListItem
      */
     public function __construct()
     {
+        $this->createdAt = new DateTime;
+        $this->updatedAt = new DateTime;
         $this->children = new ArrayCollection();
         $this->sortOrder = 0;
     }
@@ -108,12 +113,12 @@ class ListItem
     public function addChild(ListItem $child): self
     {
         if ($child === $this) {
-            throw new \LogicException('Unable to set object as child of itself.');
+            throw new LogicException('Unable to set object as child of itself.');
         }
         $parent_of_child = $child->getParent();
         while($parent_of_child) {
             if ($parent_of_child === $this) {
-                throw new \LogicException('Unable to add ancestor as child.');
+                throw new LogicException('Unable to add ancestor as child.');
             }
         }
         if (!$this->children->contains($child)) {
@@ -139,13 +144,13 @@ class ListItem
     public function setParent(?ListItem $parent): self
     {
         if ($parent === $this) {
-            throw new \LogicException('Unable to set object as parent of itself.');
+            throw new LogicException('Unable to set object as parent of itself.');
         }
         if (!is_null($parent)) {
             $parent_of_parent = $parent->getParent();
             while($parent_of_parent) {
                 if ($parent_of_parent === $this) {
-                    throw new \LogicException('Unable to set descendant as parent.');
+                    throw new LogicException('Unable to set descendant as parent.');
                 }
                 $parent_of_parent = $parent_of_parent->getParent();
             }
@@ -225,36 +230,36 @@ class ListItem
     private $updatedAt;
 
     /**
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getCreatedAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?DateTimeInterface
     {
         return $this->createdAt;
     }
 
     /**
-     * @param \DateTimeInterface|null $createdAt
+     * @param DateTimeInterface|null $createdAt
      * @return ListItem
      */
-    public function setCreatedAt(?\DateTimeInterface $createdAt): self
+    public function setCreatedAt(?DateTimeInterface $createdAt): self
     {
         $this->createdAt = $createdAt;
         return $this;
     }
 
     /**
-     * @return \DateTimeInterface|null
+     * @return DateTimeInterface|null
      */
-    public function getUpdatedAt(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?DateTimeInterface
     {
         return $this->updatedAt;
     }
 
     /**
-     * @param \DateTimeInterface|null $updatedAt
+     * @param DateTimeInterface|null $updatedAt
      * @return ListItem
      */
-    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    public function setUpdatedAt(?DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
         return $this;

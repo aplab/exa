@@ -9,6 +9,8 @@
 namespace App\Component\InstanceEditor;
 
 
+use LogicException;
+
 class InstanceEditorTab
 {
     /**
@@ -86,7 +88,7 @@ class InstanceEditorTab
     {
         if ('ckeditor' === $field->getType()->getType()) {
             if (sizeof($this->field)) {
-                throw new \LogicException('CKEditor field type requires a separate group. Check configuration.');
+                throw new LogicException('CKEditor field type requires a separate group. Check configuration.');
             }
             $this->setCkeditor();
         }

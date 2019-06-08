@@ -8,11 +8,13 @@
 
 namespace App\Component\ActionMenu;
 
+use JsonSerializable;
+
 /**
  * Class ActionMenu
  * @package App\Component\ActionMenu
  */
-class ActionMenu implements \JsonSerializable
+class ActionMenu implements JsonSerializable
 {
     /**
      * @var static[]

@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class FileController
  * @package App\Controller
- * @Route("/admin/xhr", name="admin_xhr_")
+ * @Route("/xhr", name="admin_xhr_")
  */
 class XhrController extends Controller
 {

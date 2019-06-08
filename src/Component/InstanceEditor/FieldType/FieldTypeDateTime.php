@@ -9,12 +9,14 @@
 namespace App\Component\InstanceEditor\FieldType;
 
 
+use DateTime;
+
 class FieldTypeDateTime extends FieldTypeAbstract
 {
     public function getValue()
     {
         /**
-         * @var \DateTime $value
+         * @var DateTime $value
          */
         $value = parent::getValue();
         if (!$value) {

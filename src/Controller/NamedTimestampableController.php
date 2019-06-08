@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class NamedTimestampableController
  * @package App\Controller
- * @Route("/admin/named-timestampable", name="admin_named_timestampable_")
+ * @Route("/named-timestampable", name="admin_named_timestampable_")
  */
 class NamedTimestampableController extends ReferenceAdminController
 {
