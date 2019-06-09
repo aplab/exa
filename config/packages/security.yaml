@@ -1,13 +1,11 @@
 security:
     encoders:
         App\Entity\SystemUser:
-            algorithm: argon2i
+            algorithm: auto
 
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
-        our_users:
-            entity: { class: App\Entity\SystemUser, property: username }
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
@@ -25,13 +23,9 @@ security:
             guard:
                 authenticators:
                     - App\Security\SystemUserAuthenticator
-#            guard:
-#                authenticators:
-#                    - aplab_aplab_admin.security.login_form_authenticator
-#
-#            logout:
-#                path: /logout
-#                target: /login
+            logout:
+                path: /logout
+                target: /login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication

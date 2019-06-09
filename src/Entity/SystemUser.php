@@ -3,22 +3,44 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+use App\Component\ModuleMetadata as ModuleMetadata;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\SystemUserRepository")
+ * @UniqueEntity(fields={"username"}, message="It looks like your already have an account!")
+ * @ModuleMetadata\Module(
+ *     title="System user",
+ *     description="System user entity",
+ *     tabOrder={
+ *          "General": 1000,
+ *          "Additional": 10000418
+ *     })
  */
 class SystemUser implements UserInterface
 {
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="bigint", options={"unsigned"=true})
+     * @ModuleMetadata\Property(title="ID", readonly=true,
+     *     cell={
+     *         @ModuleMetadata\Cell(order=1000, width=80, type="EditId")
+     *     },
+     *     widget={
+     *         @ModuleMetadata\Widget(order=1000, tab="Additional", type="Label")
+     *     })
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\NotBlank(message="Username should be not blank")
+     * @ModuleMetadata\Property(title="Name",
+     *     cell={@ModuleMetadata\Cell(order=2000, width=320, type="Label")},
+     *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Text")})
      */
     private $username;
 
@@ -30,6 +52,10 @@ class SystemUser implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\NotBlank(message="Password should be not blank")
+     * @ModuleMetadata\Property(title="Password",
+     *     cell={},
+     *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Password")})
      */
     private $password;
 
@@ -62,7 +88,7 @@ class SystemUser implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_USER';
+        $roles[] = 'ROLE_ADMIN';
 
         return array_unique($roles);
     }
