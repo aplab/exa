@@ -55,6 +55,18 @@
         </div>
     </div>
 {% endblock %}
+{% block password %}
+    <div class="{{ prefix }}-element">
+        <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>
+        <div class="{{ prefix }}-value">
+            <input type="password" class="form-control" placeholder="********"
+                   autocorrect="off" autocapitalize="none" autocomplete="new-password"
+                   name="{{ form_name }}[{{ field.propertyName }}]"
+                   id="{{ prefix }}-element-{{ field.type.uniqueId }}"
+                   value="">
+        </div>
+    </div>
+{% endblock %}
 {% block textarea %}
     <div class="{{ prefix }}-element">
         <label class="{{ prefix }}-label" for="{{ prefix }}-element-{{ field.type.uniqueId }}">{{ field.title }}</label>

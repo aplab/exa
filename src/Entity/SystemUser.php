@@ -55,7 +55,7 @@ class SystemUser implements UserInterface
      * @Assert\NotBlank(message="Password should be not blank")
      * @ModuleMetadata\Property(title="Password",
      *     cell={},
-     *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Text")})
+     *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Password")})
      */
     private $plainPassword;
 
