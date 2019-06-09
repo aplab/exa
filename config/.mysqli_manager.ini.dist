@@ -1,0 +1,10 @@
+[default]
+host="localhost"
+port="3306"
+username="username"
+password="pass"
+socket=""
+dbname="testdb"
+persistent="true"
+charset="utf8"
+
