@@ -116,16 +116,16 @@ services:
     #            - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
     #            - '@doctrine.orm.entity_manager'
 
-    aplab_aplab_admin.security.login_form_authenticator:
-        class: App\Security\LoginFormAuthenticator
-        autowire: true
-
-
-    aplab_aplab_admin.doctrine.hash_password_listener:
-        class: App\Doctrine\HashPasswordListener
-        autowire: true
-        tags:
-            - { name: doctrine.event_subscriber }
+#    aplab_aplab_admin.security.login_form_authenticator:
+#        class: App\Security\LoginFormAuthenticator
+#        autowire: true
+#
+#
+#    aplab_aplab_admin.doctrine.hash_password_listener:
+#        class: App\Doctrine\HashPasswordListener
+#        autowire: true
+#        tags:
+#            - { name: doctrine.event_subscriber }
 
     aplab_aplab_admin.local_storage:
         class: App\Component\FileStorage\LocalStorage

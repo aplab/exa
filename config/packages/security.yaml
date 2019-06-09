@@ -1,12 +1,18 @@
 security:
     encoders:
         App\Entity\SystemUser:
-            algorithm: auto
+            algorithm: argon2i
+
 
     # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
     providers:
         our_users:
             entity: { class: App\Entity\SystemUser, property: username }
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\SystemUser
+                property: username
 
     firewalls:
         # disables authentication for assets and the profiler, adapt it according to your needs
@@ -18,11 +24,14 @@ security:
             anonymous: ~
             guard:
                 authenticators:
-                    - aplab_aplab_admin.security.login_form_authenticator
-
-            logout:
-                path: /logout
-                target: /login
+                    - App\Security\SystemUserAuthenticator
+#            guard:
+#                authenticators:
+#                    - aplab_aplab_admin.security.login_form_authenticator
+#
+#            logout:
+#                path: /logout
+#                target: /login
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#firewalls-authentication
