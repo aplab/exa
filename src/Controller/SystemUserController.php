@@ -9,8 +9,12 @@
 namespace App\Controller;
 
 
+use App\Component\InstanceEditor\InstanceEditor;
+use App\Component\InstanceEditor\InstatceEditorManager;
 use App\Entity\SystemUser;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
  * Class NamedTimestampableController
@@ -23,6 +27,12 @@ class SystemUserController extends ReferenceAdminController
      * @var string
      */
     protected $entityClassName = SystemUser::class;
+
+    public function setPasswordEncoder(UserPasswordEncoderInterface $passwordEncoder)
+    {
+        $class = $this->entityClassName;
+        $class::setPasswordEncoder($passwordEncoder);
+    }
 
     /**
      * @Route("/del", name="drop", methods="POST")

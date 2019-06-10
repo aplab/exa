@@ -21,6 +21,11 @@ use Symfony\Component\HttpFoundation\Request;
 class InstanceEditor
 {
     /**
+     * @var string
+     */
+    const REQUEST_KEY = 'apl-instance-editor';
+
+    /**
      * @var object
      */
     protected $entity;
@@ -156,7 +161,7 @@ class InstanceEditor
      */
     public function handleRequest(Request $request)
     {
-        $data = $request->request->get('apl-instance-editor', []);
+        $data = $request->request->get(static::REQUEST_KEY, []);
         if (empty($data)) {
             return;
         }

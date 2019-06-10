@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use InvalidArgumentException;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Component\ModuleMetadata as ModuleMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -22,6 +24,24 @@ use Symfony\Component\Validator\Constraints as Assert;
 class SystemUser implements UserInterface
 {
     /**
+     * @var int
+     */
+    const MIN_PASSWORD_LENGTH = 8;
+
+    /**
+     * @var UserPasswordEncoderInterface
+     */
+    private static $passwordEncoder;
+
+    /**
+     * @param UserPasswordEncoderInterface $password_encoder
+     */
+    public static function setPasswordEncoder(UserPasswordEncoderInterface $password_encoder)
+    {
+        static::$passwordEncoder = $password_encoder;
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="bigint", options={"unsigned"=true})
@@ -37,7 +57,12 @@ class SystemUser implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\NotBlank(message="Username should be not blank")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 50,
+     *      minMessage = "Your first name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * )
      * @ModuleMetadata\Property(title="Name",
      *     cell={@ModuleMetadata\Cell(order=2000, width=320, type="Label")},
      *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Text")})
@@ -76,6 +101,10 @@ class SystemUser implements UserInterface
 
     public function setUsername(string $username): self
     {
+        $l = mb_strlen($username);
+        if (!$l) {
+            throw new InvalidArgumentException('username cannot be empty');
+        }
         $this->username = $username;
 
         return $this;
@@ -108,10 +137,22 @@ class SystemUser implements UserInterface
         return (string) $this->password;
     }
 
+    /**
+     * @param string $password
+     * @return SystemUser
+     */
     public function setPassword(string $password): self
     {
-        $this->password = $password;
-
+        $l = mb_strlen($password);
+        if (!$l) {
+            return $this;
+        }
+        if ($l < static::MIN_PASSWORD_LENGTH) {
+            throw new InvalidArgumentException('password too short, 8 characters needed');
+        }
+        $encoded = static::$passwordEncoder->encodePassword(
+            $this, $password);
+        $this->password = $encoded;
         return $this;
     }
 

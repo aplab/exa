@@ -89,6 +89,13 @@ services:
     App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
+
+    App\Controller\SystemUserController:
+        tags: ['controller.service_arguments']
+        calls:
+            - method: setPasswordEncoder
+              arguments:
+                  - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
     # App\PublicController\:
     #     resource: '../src/PublicController'
     #     tags: ['controller.service_arguments']
