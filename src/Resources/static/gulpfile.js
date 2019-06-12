@@ -49,6 +49,22 @@ gulp.task('scss-dev', function () {
         .pipe(touch());
 });
 
+gulp.task('scss-login', function () {
+    return gulp.src([
+        './stylesheet/login.scss'
+    ])
+        .pipe(plumber())
+        .pipe(sourcemaps.init())
+        .pipe(sass())
+        .pipe(replace('../fonts/', ''))
+        .pipe(autoprefixer())
+        .pipe(cssnano({discardUnused: {fontFace: false},zindex: false}))
+        .pipe(concat('login.css'))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(dest_dir))
+        .pipe(touch());
+});
+
 gulp.task('cke', function () {
     return gulp.src(
         [
@@ -119,6 +135,24 @@ gulp.task('scripts-dev', function () {
         .pipe(gulp.dest(dest_dir));
 });
 
+gulp.task('scripts-login', function () {
+    return gulp.src(
+        [
+            './node_modules/jquery/dist/jquery.js',
+            './node_modules/popper.js/dist/umd/popper.js',
+            './node_modules/bootstrap/dist/js/bootstrap.js',
+            './js/login.js'
+        ])
+        .pipe(plumber())
+        .pipe(cached('scripts-login'))
+        .pipe(sourcemaps.init())
+        .pipe(uglify())
+        .pipe(remember('scripts-login'))
+        .pipe(concat('login.js'))
+        .pipe(sourcemaps.write('./'))
+        .pipe(gulp.dest(dest_dir));
+});
+
 gulp.task('fonts', function () {
     return gulp.src(
         [
@@ -140,12 +174,12 @@ gulp.task('fonts', function () {
 // });
 
 gulp.task('watch', function () {
-    gulp.watch('./stylesheet/*.scss', gulp.series('scss-dev'));
+    gulp.watch('./stylesheet/*.scss', gulp.series('scss-dev', 'scss-login'));
     gulp.watch('./stylesheet/*.css', gulp.series('css-dev'));
-    gulp.watch('./js/*.js', gulp.series('scripts-dev'));
+    gulp.watch('./js/*.js', gulp.series('scripts-dev', 'scripts-login'));
     gulp.watch('./admin_modules/**/*.js', gulp.series('scripts-dev'));
     gulp.watch('./admin_modules/**/*.scss', gulp.series('scss-dev'));
 });
 
-gulp.task('default', gulp.series('scss-dev', 'css-dev', 'scripts-dev', /*'img',*/ 'fonts'));
+gulp.task('default', gulp.series('scss-dev', 'scss-login', 'css-dev', 'scripts-dev', 'scripts-login', /*'img',*/ 'fonts'));
 gulp.task('dev', gulp.series('default', 'watch'));

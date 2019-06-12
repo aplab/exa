@@ -1,36 +1,64 @@
-{% extends 'base.html.twig' %}
-
-{% block title %}Log in!{% endblock %}
-
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('/static/vendor.css') }}">
+        <link rel="stylesheet" href="{{ asset('/static/login.css') }}">
+    {% endblock %}
+</head>
+<body>
 {% block body %}
-<form method="post">
-    {% if error %}
-        <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <form method="post">
+                    <div class="modal-header">
+                        <h2 class="modal-title" id="exampleModalLabel"><i class="fas fa-lock"></i> Sign in</h2>
+                    </div>
+                    <div class="modal-body">
 
-    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-    <label for="inputUsername" class="sr-only">Username</label>
-    <input type="text" value="{{ last_username }}" name="username" id="inputUsername" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                        <div class="input-group mb-3 input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-success"><i class="fa fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="Username"
+                                   value="{{ last_username }}" name="username">
+                        </div>
 
-    <input type="hidden" name="_csrf_token"
-           value="{{ csrf_token('authenticate') }}"
-    >
+                        <div class="input-group input-group-lg">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text bg-success"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" name="password" class="form-control" placeholder="Password">
+                        </div>
 
-    {#
-        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
-        See https://symfony.com/doc/current/security/remember_me.html
-
-        <div class="checkbox mb-3">
-            <label>
-                <input type="checkbox" name="_remember_me"> Remember me
-            </label>
+                    </div>
+                    <div class="modal-footer">
+                        {% if error %}
+                            <script>
+                                setTimeout(function() {
+                                    alert('{{ error.messageKey|trans(error.messageData, 'security') }}');
+                                }, 1000);
+                            </script>
+                        {% endif %}
+                        <input type="hidden" name="_csrf_token"
+                               value="{{ csrf_token('authenticate') }}">
+                        <button type="submit" class="btn btn-success btn-lg">Login</button>
+                    </div>
+                </form>
+            </div>
         </div>
-    #}
-
-    <button class="btn btn-lg btn-primary" type="submit">
-        Sign in
-    </button>
-</form>
+    </div>
 {% endblock %}
+{% block javascripts %}
+    <script src="{{ asset('static/login.js') }}"></script>
+{% endblock %}
+</body>
+</html>

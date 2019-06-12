@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\SystemUser;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,11 @@ class SecurityController extends AbstractController
      */
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        $user = $this->getUser();
+        if ($user instanceof SystemUser) {
+            $this->addFlash('error', 'already logged in');
+            return $this->redirectToRoute('admin_desktop');
+        }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
