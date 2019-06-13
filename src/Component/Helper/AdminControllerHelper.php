@@ -168,7 +168,7 @@ class AdminControllerHelper
         if (sizeof($data) < 2) {
             throw new RuntimeException('unable to get module path not from a module');
         }
-        $data = array_slice($data, 0, 3);
+        $data = array_slice($data, 0, 2);
         if ($suffix) {
             $data[] = $suffix;
         }
@@ -184,7 +184,7 @@ class AdminControllerHelper
         if (sizeof($data) < 2) {
             throw new RuntimeException('unable to get bundle path not from a bundle');
         }
-        return join('/', array_slice($data, 0, 3));
+        return join('/', array_slice($data, 0, 2));
     }
 
     /**
