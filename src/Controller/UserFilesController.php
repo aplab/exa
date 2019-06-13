@@ -10,7 +10,11 @@ namespace App\Controller;
 
 
 use App\Component\DataTableRepresentation\DataTableRepresentation;
+use App\Component\Toolbar\Exception;
 use App\Entity\UserFiles\File;
+use Psr\SimpleCache\InvalidArgumentException;
+use ReflectionException;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -28,10 +32,10 @@ class UserFilesController extends ReferenceAdminController
     /**
      * @Route("/", name="list", methods="GET")
      * @param DataTableRepresentation $data_table_representation
-     * @return \Symfony\Component\HttpFoundation\Response
-     * @throws \Psr\SimpleCache\InvalidArgumentException
-     * @throws \ReflectionException
-     * @throws \App\Component\Toolbar\Exception
+     * @return Response
+     * @throws InvalidArgumentException
+     * @throws ReflectionException
+     * @throws Exception
      */
     public function listItems(DataTableRepresentation $data_table_representation)
     {

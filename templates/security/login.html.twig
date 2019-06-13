@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Sign in{% endblock %}</title>
     {% block stylesheets %}
         <link rel="stylesheet" href="{{ asset('/static/vendor.css') }}">
         <link rel="stylesheet" href="{{ asset('/static/login.css') }}">
@@ -20,7 +20,10 @@
             <div class="modal-content">
                 <form method="post">
                     <div class="modal-header">
-                        <h2 class="modal-title" id="exampleModalLabel"><i class="fas fa-lock"></i> Sign in</h2>
+                        <h2 class="modal-title text-nowrap" id="exampleModalLabel">
+                            <i class="fas fa-lock"></i>
+                            Sign in
+                        </h2>
                     </div>
                     <div class="modal-body">
 

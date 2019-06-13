@@ -106,7 +106,6 @@ class SystemUser implements UserInterface
             throw new InvalidArgumentException('username cannot be empty');
         }
         $this->username = $username;
-
         return $this;
     }
 

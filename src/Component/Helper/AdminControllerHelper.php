@@ -16,6 +16,7 @@ use App\Component\Menu\Menu;
 use App\Component\Menu\MenuManager;
 use App\Component\Toolbar\Toolbar;
 use App\Component\Toolbar\ToolbarManager;
+use App\Util\HtmlTitle;
 use Doctrine\Common\Annotations\Reader;
 use Psr\SimpleCache\InvalidArgumentException;
 use RuntimeException;
@@ -49,6 +50,8 @@ class AdminControllerHelper
      */
     protected $annotationsReader;
 
+    protected $htmlTitle;
+
     /**
      * AdminControllerHelper constructor.
      * @param MenuManager $menuManager
@@ -61,13 +64,15 @@ class AdminControllerHelper
                                 ActionMenuManager $actionMenuManager,
                                 ToolbarManager $toolbarManager,
                                 RequestStack $requestStack,
-                                Reader $annotations_reader)
+                                Reader $annotations_reader,
+                                HtmlTitle $html_title)
     {
         $this->annotationsReader = $annotations_reader;
-        $this->menuManager = $menuManager;
+        $this->menuManager       = $menuManager;
         $this->actionMenuManager = $actionMenuManager;
-        $this->toolbarManager = $toolbarManager;
-        $this->requestStack = $requestStack;
+        $this->toolbarManager    = $toolbarManager;
+        $this->requestStack      = $requestStack;
+        $this->htmlTitle         = $html_title;
     }
 
     /**
@@ -189,4 +194,24 @@ class AdminControllerHelper
     {
         return $this->annotationsReader;
     }
+
+    /**
+     * @return HtmlTitle
+     */
+    public function getHtmlTitle(): HtmlTitle
+    {
+        return $this->htmlTitle;
+    }
+
+    /**
+     * @param HtmlTitle $htmlTitle
+     * @return AdminControllerHelper
+     */
+    public function setHtmlTitle(HtmlTitle $htmlTitle): AdminControllerHelper
+    {
+        $this->htmlTitle = $htmlTitle;
+        return $this;
+    }
+
+
 }

@@ -10,6 +10,7 @@ namespace App\Controller;
 
 
 use App\Component\Helper\AdminControllerHelper;
+use LogicException;
 use ReflectionClass;
 use ReflectionException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,6 +34,11 @@ abstract class BaseAdminController extends AbstractController
     protected $routeAnnotation;
 
     /**
+     * @var ReflectionClass
+     */
+    protected $entityClass;
+
+    /**
      * BaseAdminController constructor.
      * @param AdminControllerHelper $adminControllerHelper
      * @throws ReflectionException
@@ -41,8 +47,10 @@ abstract class BaseAdminController extends AbstractController
     {
         $this->adminControllerHelper = $adminControllerHelper;
         if (!isset($this->entityClassName)) {
-            throw new \LogicException(get_class($this) . ' must have a protected $entityClassName = Entity::class');
+            throw new LogicException(get_class($this) . ' must have a protected $entityClassName = Entity::class');
         }
+        $this->entityClass = new ReflectionClass($this->getEntityClassName());
+        $this->adminControllerHelper->getHtmlTitle()->setTitle($this->getEntityClass()->getShortName());
         $reader = $adminControllerHelper->getAnnotationsReader();
         $this->routeAnnotation = $reader->getClassAnnotation(new ReflectionClass(static::class), Route::class);
     }
@@ -54,6 +62,24 @@ abstract class BaseAdminController extends AbstractController
         /** @noinspection PhpUndefinedFieldInspection */
         return $this->entityClassName;
     }
+
+    /**
+     * @return AdminControllerHelper
+     */
+    public function getAdminControllerHelper(): AdminControllerHelper
+    {
+        return $this->adminControllerHelper;
+    }
+
+    /**
+     * @return ReflectionClass
+     */
+    public function getEntityClass(): ReflectionClass
+    {
+        return $this->entityClass;
+    }
+
+
 
     /**
      * @return Route
@@ -68,6 +94,7 @@ abstract class BaseAdminController extends AbstractController
      * @return mixed
      */
     protected function routeToControllerName($routename) {
+        /** @noinspection PhpParamsInspection */
         $routes = $this->get('router')->getRouteCollection();
         return $routes->get($routename)->getDefaults()['_controller'];
     }

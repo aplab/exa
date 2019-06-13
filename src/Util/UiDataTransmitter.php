@@ -9,6 +9,9 @@
 namespace App\Util;
 
 
+use stdClass;
+use Throwable;
+
 class UiDataTransmitter
 {
     const COOKIE_KEY = 'aplab-admin-data';
@@ -26,17 +29,17 @@ class UiDataTransmitter
         try {
             $data = $_COOKIE[static::COOKIE_KEY] ?? '{}';
             $data = json_decode($data);
-        } catch (\Throwable $exception) {
-            $data = new \stdClass;
+        } catch (Throwable $exception) {
+            $data = new stdClass;
         }
         try {
             $this->sidebarOpen = $data->sidebar_open;
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             $this->sidebarOpen = false;
         }
         try {
             $this->sidebarPin = $data->sidebar_pin;
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             $this->sidebarPin = false;
         }
     }

@@ -4,3 +4,4 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         UiDataTransmitter: '@App\Util\UiDataTransmitter'
+        HtmlTitle: '@App\Util\HtmlTitle'

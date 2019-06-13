@@ -63,10 +63,10 @@ services:
             - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
             - '@doctrine.orm.entity_manager'
 
-    App\Component\DataTableRepresentation\DataTableRepresentationTreeMod:
-        arguments:
-            - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
-            - '@doctrine.orm.entity_manager'
+#    App\Component\DataTableRepresentation\DataTableRepresentationTreeMod:
+#        arguments:
+#            - '@App\Component\ModuleMetadata\ModuleMetadataRepository'
+#            - '@doctrine.orm.entity_manager'
 
     App\Component\SystemState\SystemStateManager:
         arguments:
@@ -144,5 +144,8 @@ services:
             - {$public_dir: '%aplab_admin_public_dir%'}
 
     App\Component\FileStorage\LocalStorage: '@aplab_aplab_admin.local_storage'
+
+    app.util.html_title:
+        class: App\Util\HtmlTitle
 
 
