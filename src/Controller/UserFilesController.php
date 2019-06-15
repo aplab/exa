@@ -22,7 +22,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/user-files", name="admin_user_files_")
  */
-class UserFilesController extends ReferenceAdminController
+class UserFilesController extends ReferenceController
 {
     /**
      * @var string

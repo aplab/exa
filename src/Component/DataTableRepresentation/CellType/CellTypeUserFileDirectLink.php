@@ -16,7 +16,7 @@ class CellTypeUserFileDirectLink extends CellTypeAbstract
     /**
      * @var string
      */
-    public static $prefix = '/aplab/filestorage/';
+    public static $prefix = '/filestorage/';
 
     /**
      * @param object $entity

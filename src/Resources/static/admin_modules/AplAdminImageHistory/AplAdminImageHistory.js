@@ -228,9 +228,9 @@ function AplAdminImageHistory()
             return;
         }
         load_in_progress = true;
-        var url = '/admin/xhr/historyUploadImage/listItems/' + load_offset + '/';
+        var url = '/xhr/historyUploadImage/listItems/' + load_offset + '/';
         if (favorites) {
-            url = '/admin/xhr/historyUploadImage/listFavorites/' + load_offset + '/';
+            url = '/xhr/historyUploadImage/listFavorites/' + load_offset + '/';
         }
         $.get(
             url, {}, function (data, status, jqXHR)
@@ -344,7 +344,7 @@ function AplAdminImageHistory()
         }
         var id = $(o).parent().data('itemId');
         $.post(
-            '/admin/xhr/historyUploadImage/dropItem/' + id + '/', {},
+            '/xhr/historyUploadImage/dropItem/' + id + '/', {},
             function (data, status, jqXHR)
             {
                 if (!data.hasOwnProperty('status')) {
@@ -371,7 +371,7 @@ function AplAdminImageHistory()
         }
         var id = $(o).parent().data('itemId');
         $.post(
-            '/admin/xhr/historyUploadImage/favItem/' + id + '/', {},
+            '/xhr/historyUploadImage/favItem/' + id + '/', {},
             function (data, status, jqXHR)
             {
                 if (!data.hasOwnProperty('status')) {

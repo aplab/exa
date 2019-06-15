@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/bind-contained", name="admin_bind_contained_")
  */
-class BindContainedController extends ReferenceAdminController
+class BindContainedController extends ReferenceController
 {
     /**
      * @var string

@@ -20,7 +20,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/tree", name="admin_tree_")
  */
-class TreeController extends ReferenceAdminController
+class TreeController extends ReferenceController
 {
     /**
      * @var string

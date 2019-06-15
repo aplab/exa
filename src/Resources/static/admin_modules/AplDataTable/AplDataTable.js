@@ -475,7 +475,7 @@ function AplDataTable(container) {
             value: value,
             class: data_class
         };
-        var url = '/admin/xhr/' + '/aplDataTable/editProperty/';
+        var url = '/xhr/' + '/aplDataTable/editProperty/';
         url = url.replace(/\/{2,}/, '/');
         $.post(
             url,
@@ -505,7 +505,7 @@ function AplDataTable(container) {
     this.batchAddFilesPlugin = function () {
         var uploader = AplAdminFileUploader.getInstance();
         uploader.setTitle('Upload files');
-        uploader.setUrl('/admin/xhr/uploadFile/');
+        uploader.setUrl('/xhr/uploadFile/');
         uploader.done = function () {
             uploader.purgeWindow();
             location = location;

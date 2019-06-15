@@ -17,7 +17,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("/fields-example", name="admin_fields_example_")
  */
-class FieldsExampleController extends ReferenceAdminController
+class FieldsExampleController extends ReferenceController
 {
     /**
      * @var string

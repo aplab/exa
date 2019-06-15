@@ -11,6 +11,7 @@ namespace App\Controller;
 
 use App\Entity\UserFiles\File;
 use App\Util\Path;
+use SplFileInfo;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\Routing\Annotation\Route;
@@ -21,6 +22,22 @@ use Symfony\Component\Routing\Annotation\Route;
  */
 class FilesController extends AbstractController
 {
+    /**
+     * @var string
+     */
+    private $publicDir;
+
+    /**
+     * @var string
+     */
+    private $localStoragePath;
+
+    public function __construct(string $public_dir, string $local_storage_path)
+    {
+        $this->publicDir = $public_dir;
+        $this->localStoragePath = $local_storage_path;
+    }
+
     /**
      * @Route("/files/{id}/{name}",
      *     name="files", methods="GET",
@@ -37,25 +54,21 @@ class FilesController extends AbstractController
             ->getRepository(File::class)
             ->find($id);
         if (!($file instanceof File)) {
-            throw $this->createNotFoundException(
-                'File not found'
-            );
+            /** @noinspection PhpParamsInspection */
+            throw $this->createNotFoundException('File not found');
         }
         if ($file->getName() !== $name) {
-            throw $this->createNotFoundException(
-                'File not found'
-            );
+            /** @noinspection PhpParamsInspection */
+            throw $this->createNotFoundException('File not found');
         }
         $path_part = '/' . join('/', array_slice(str_split($file->getFilename(), 3), 0, 3));
-        $dir = dirname($this->get('kernel')->getRootDir(), 1);
         $mime = $file->getContentType();
         $path = new Path(
-            $dir,
-            '/public/aplab/filestorage/',
+            $this->localStoragePath,
             $path_part,
             $file->getFilename()
         );
-        $response = new BinaryFileResponse(new \SplFileInfo($path));
+        $response = new BinaryFileResponse(new SplFileInfo($path));
         $response->setAutoEtag();
         $response->headers->set('Content-Type', $mime);
         return $response;

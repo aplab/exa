@@ -11,7 +11,7 @@ function AplAdminFileUploader()
         AplAdminFileUploader.instance = this;
     }
 
-    var url = '/admin/xhr/uploadImage/';
+    var url = '/xhr/uploadImage/';
 
     /**
      * Class prefix

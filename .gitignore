@@ -21,4 +21,5 @@
 /.idea/
 /src/Resources/static/node_modules/
 /public/aplab/
+/public/filestorage/
 /public/static/ckeditor/

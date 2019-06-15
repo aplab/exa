@@ -18,7 +18,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @package App\Controller
  * @Route("/system-user", name="admin_system_user_")
  */
-class SystemUserController extends ReferenceAdminController
+class SystemUserController extends ReferenceController
 {
     /**
      * @var string

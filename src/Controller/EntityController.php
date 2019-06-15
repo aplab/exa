@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 
-use App\Component\Helper\AdminControllerHelper;
+use App\Component\Helper\EntityControllerHelper;
 use LogicException;
 use ReflectionClass;
 use ReflectionException;
@@ -21,10 +21,10 @@ use Symfony\Component\Routing\Annotation\Route;
  * Class BaseAdminController
  * @package App\Controller
  */
-abstract class BaseAdminController extends AbstractController
+abstract class EntityController extends AbstractController
 {
     /**
-     * @var AdminControllerHelper
+     * @var EntityControllerHelper
      */
     protected $adminControllerHelper;
 
@@ -40,10 +40,10 @@ abstract class BaseAdminController extends AbstractController
 
     /**
      * BaseAdminController constructor.
-     * @param AdminControllerHelper $adminControllerHelper
+     * @param EntityControllerHelper $adminControllerHelper
      * @throws ReflectionException
      */
-    final public function __construct(AdminControllerHelper $adminControllerHelper)
+    final public function __construct(EntityControllerHelper $adminControllerHelper)
     {
         $this->adminControllerHelper = $adminControllerHelper;
         if (!isset($this->entityClassName)) {
@@ -64,9 +64,9 @@ abstract class BaseAdminController extends AbstractController
     }
 
     /**
-     * @return AdminControllerHelper
+     * @return EntityControllerHelper
      */
-    public function getAdminControllerHelper(): AdminControllerHelper
+    public function getAdminControllerHelper(): EntityControllerHelper
     {
         return $this->adminControllerHelper;
     }

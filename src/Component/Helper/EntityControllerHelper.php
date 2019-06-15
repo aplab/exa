@@ -23,7 +23,7 @@ use RuntimeException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\RequestStack;
 
-class AdminControllerHelper
+class EntityControllerHelper
 {
     /**
      * @var MenuManager
@@ -205,9 +205,9 @@ class AdminControllerHelper
 
     /**
      * @param HtmlTitle $htmlTitle
-     * @return AdminControllerHelper
+     * @return EntityControllerHelper
      */
-    public function setHtmlTitle(HtmlTitle $htmlTitle): AdminControllerHelper
+    public function setHtmlTitle(HtmlTitle $htmlTitle): EntityControllerHelper
     {
         $this->htmlTitle = $htmlTitle;
         return $this;

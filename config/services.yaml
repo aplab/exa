@@ -7,7 +7,7 @@ parameters:
     locale: 'en'
     aplab_admin_public_dir: '%kernel.project_dir%/public/'
     aplab_admin_data_dir: '%kernel.project_dir%/var/aplab-admin/data/'
-    aplab_admin_local_storage_path: '%kernel.project_dir%/public/aplab/filestorage/'
+    aplab_admin_local_storage_path: '%kernel.project_dir%/public/filestorage/'
 
 services:
     # default configuration for services in *this* file
@@ -78,7 +78,7 @@ services:
     #        arguments:
     #            $aplab_admin_data_dir: '%aplab_admin_data_dir%'
 
-    App\Component\Helper\AdminControllerHelper:
+    App\Component\Helper\EntityControllerHelper:
         arguments:
             - '@App\Component\Menu\MenuManager'
             - '@App\Component\ActionMenu\ActionMenuManager'
@@ -96,6 +96,12 @@ services:
             - method: setPasswordEncoder
               arguments:
                   - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
+
+    App\Controller\FilesController:
+        tags: ['controller.service_arguments']
+        arguments:
+            $public_dir: '%aplab_admin_public_dir%'
+            $local_storage_path: '%aplab_admin_local_storage_path%'
     # App\PublicController\:
     #     resource: '../src/PublicController'
     #     tags: ['controller.service_arguments']

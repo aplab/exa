@@ -26,7 +26,7 @@ use Throwable;
  * Class ReferenceAdminController
  * @package App\Controller
  */
-abstract class ReferenceAdminController extends BaseAdminController
+abstract class ReferenceController extends EntityController
 {
     /**
      * @Route("/", name="list", methods="GET")
