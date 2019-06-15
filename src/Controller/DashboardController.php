@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
  * @package App\Controller
  * @Route("", name="admin_")
  */
-class AdminController extends AbstractController
+class DashboardController extends AbstractController
 {
     /**
      * @var HtmlTitle
