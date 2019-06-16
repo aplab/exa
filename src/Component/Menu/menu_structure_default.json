@@ -27,8 +27,8 @@
             },
             {
                 "id": "system-user",
-                "name": "System user",
-                "icon": "fas fa-users-cog",
+                "name": "Admin",
+                "icon": "fas fa-user-shield",
                 "disabled": false,
                 "target": "_self",
                 "route": "admin_system_user_list"

@@ -13,18 +13,20 @@ use App\Component\FileStorage\LocalStorage;
 use App\Component\Uploader\FileUploader;
 use App\Component\Uploader\ImageUploader;
 use App\Entity\HistoryUploadImage;
+use Exception;
 use Respect\Validation\Validator;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
+use Throwable;
 
 /**
  * Class FileController
  * @package App\Controller
  * @Route("/xhr", name="admin_xhr_")
  */
-class XhrController extends Controller
+class XhrController extends AbstractController
 {
     /**
      * @Route("/uploadImage/", name="upload_image", methods="POST")
@@ -41,7 +43,7 @@ class XhrController extends Controller
                 'status' => 'ok',
                 'url' => $url
             ]);
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             return new JsonResponse([
                 'message' => $exception->getMessage(),
                 'code' => $exception->getCode()
@@ -64,7 +66,7 @@ class XhrController extends Controller
                 'status' => 'ok',
                 'url' => $url
             ]);
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             return new JsonResponse([
                 'message' => $exception->getMessage(),
                 'code' => $exception->getCode()
@@ -159,6 +161,7 @@ class XhrController extends Controller
     /**
      * @Route("/aplDataTable/editProperty/",
      *     name="apl_data_table_edit_property", methods="POST")
+     * @param Request $request
      * @return JsonResponse
      */
     public function editProperty(Request $request)
@@ -167,7 +170,7 @@ class XhrController extends Controller
             $post = $request->request;
             $class = $post->get('class');
             if (!class_exists($class)) {
-                throw new \Exception('Unknown entity type');
+                throw new Exception('Unknown entity type');
             }
             $pk = $post->get('pk');
             $id = $pk['id'];
@@ -178,13 +181,13 @@ class XhrController extends Controller
             $repository = $entity_manager->getRepository($class);
             $item = $repository->find($id);
             if (!($item instanceof $class)) {
-                throw new \Exception('Object not found');
+                throw new Exception('Object not found');
             }
             $setter = 'set' . ucfirst($name);
             $item->$setter($value);
             $entity_manager->persist($item);
             $entity_manager->flush();
-        } catch (\Throwable $exception) {
+        } catch (Throwable $exception) {
             return new JsonResponse([
                 'status' => 'error',
                 'message' => $exception->getMessage()
