@@ -97,6 +97,16 @@ services:
               arguments:
                   - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
 
+    App\Controller\UserController:
+        tags: ['controller.service_arguments']
+        calls:
+            - method: setPasswordEncoder
+              arguments:
+                  - '@Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface'
+            - method: setValidator
+              arguments:
+                  - '@Symfony\Component\Validator\Validator\ValidatorInterface'
+
     App\Controller\FilesController:
         tags: ['controller.service_arguments']
         arguments:

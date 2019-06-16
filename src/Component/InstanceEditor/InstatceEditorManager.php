@@ -13,6 +13,7 @@ use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\SimpleCache\InvalidArgumentException;
 use ReflectionException;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 class InstatceEditorManager
 {
@@ -26,16 +27,21 @@ class InstatceEditorManager
      */
     protected $entityManagerInterface;
 
+    protected $validatorInterface;
+
     /**
      * InstatceEditorManager constructor.
      * @param ModuleMetadataRepository $module_metadata_repository
      * @param EntityManagerInterface $entity_manager_interface
+     * @param ValidatorInterface $validator_interface
      */
     public function __construct(ModuleMetadataRepository $module_metadata_repository,
-                                EntityManagerInterface $entity_manager_interface)
+                                EntityManagerInterface $entity_manager_interface,
+                                ValidatorInterface $validator_interface)
     {
         $this->moduleMetadataRepository = $module_metadata_repository;
         $this->entityManagerInterface = $entity_manager_interface;
+        $this->validatorInterface = $validator_interface;
     }
 
     /**
@@ -65,5 +71,11 @@ class InstatceEditorManager
         return $this->entityManagerInterface;
     }
 
-
+    /**
+     * @return ValidatorInterface
+     */
+    public function getValidatorInterface(): ValidatorInterface
+    {
+        return $this->validatorInterface;
+    }
 }

@@ -162,15 +162,13 @@ abstract class ReferenceController extends EntityController
      * @throws InvalidArgumentException
      * @throws ReflectionException
      */
-    public function createItem(InstatceEditorManager $instatceEditorManager, Request $request,
-                               ValidatorInterface $validator)
+    public function createItem(InstatceEditorManager $instatceEditorManager, Request $request)
     {
         $entity_class_name = $this->getEntityClassName();
         $item              = new $entity_class_name;
         $instance_editor   = $instatceEditorManager->getInstanceEditor($item);
         try {
             $instance_editor->handleRequest($request);
-            $errors = $validator->validate($item);
         } catch (Throwable $exception) {
             $this->addFlash('error', $exception->getMessage());
             return $this->redirectToRoute($this->getRouteAnnotation()->getName() . 'add');
@@ -231,7 +229,6 @@ abstract class ReferenceController extends EntityController
         $instance_editor = $instance_editor_manager->getInstanceEditor($item);
         try {
             $instance_editor->handleRequest($request);
-            //$errors = $validator->validate($item);
         } catch (Throwable $exception) {
             $this->addFlash('error', $exception->getMessage());
             return $this->redirectToRoute($this->getRouteAnnotation()->getName() . 'edit', ['id' => $id]);

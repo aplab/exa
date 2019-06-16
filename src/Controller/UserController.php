@@ -9,22 +9,23 @@
 namespace App\Controller;
 
 
-use App\Entity\Admin;
+use App\Entity\User;
 use RuntimeException;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
  * Class NamedTimestampableController
  * @package App\Controller
- * @Route("/admin", name="admin_")
+ * @Route("/user", name="user_")
  */
-class AdminController extends ReferenceController
+class UserController extends ReferenceController
 {
     /**
      * @var string
      */
-    protected $entityClassName = Admin::class;
+    protected $entityClassName = User::class;
 
     public function setPasswordEncoder(UserPasswordEncoderInterface $passwordEncoder)
     {
@@ -32,12 +33,17 @@ class AdminController extends ReferenceController
         $class::setPasswordEncoder($passwordEncoder);
     }
 
+    public function setValidator(ValidatorInterface $validator)
+    {
+        $class = $this->entityClassName;
+        $class::setValidator($validator);
+    }
+
     /**
      * @Route("/del", name="drop", methods="POST")
      */
     public function dropItem()
     {
-        $user = $this->getUser();
         $class = $this->getEntityClassName();
         $entity_manager = $this->getDoctrine()->getManager();
         $class_metadata = $entity_manager->getClassMetadata($class);
@@ -56,11 +62,7 @@ class AdminController extends ReferenceController
         $ids = json_decode($ids);
         $items = $entity_manager->getRepository($class)->findBy([$key => $ids]);
         foreach ($items as $item) {
-            if ($item === $user) {
-                $this->addFlash('warning', 'You can not delete the current user of the system.');
-            } else {
-                $entity_manager->remove($item);
-            }
+            $entity_manager->remove($item);
         }
         $entity_manager->flush();
         return $this->redirectToRoute($this->getRouteAnnotation()->getName() . 'list');

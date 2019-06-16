@@ -9,19 +9,20 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use App\Component\ModuleMetadata as ModuleMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\AdminRepository")
- * @UniqueEntity(fields={"username"}, message="It looks like your already have an account!")
+ * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"email"}, message="It looks like your already have an account!")
  * @ModuleMetadata\Module(
- *     title="Admin",
- *     description="Admin entity",
+ *     title="User",
+ *     description="User entity",
  *     tabOrder={
  *          "General": 1000,
  *          "Additional": 10000418
  *     })
  */
-class Admin implements UserInterface
+class User implements UserInterface
 {
     /**
      * @var int
@@ -42,6 +43,19 @@ class Admin implements UserInterface
     }
 
     /**
+     * @var ValidatorInterface
+     */
+    private static $validator;
+
+    /**
+     * @param ValidatorInterface $validator
+     */
+    public static function setValidator(ValidatorInterface $validator)
+    {
+        static::$validator = $validator;
+    }
+
+    /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="bigint", options={"unsigned"=true})
@@ -57,17 +71,15 @@ class Admin implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Your first name must be at least {{ limit }} characters long",
-     *      maxMessage = "Your first name cannot be longer than {{ limit }} characters"
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
      * )
-     * @ModuleMetadata\Property(title="Name",
+     * @ModuleMetadata\Property(title="Email",
      *     cell={@ModuleMetadata\Cell(order=2000, width=320, type="Label")},
      *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Text")})
      */
-    private $username;
+    private $email;
 
     /**
      * @ORM\Column(type="json")
@@ -94,19 +106,29 @@ class Admin implements UserInterface
      *
      * @see UserInterface
      */
-    public function getUsername(): string
+    public function getEmail(): ?string
     {
-        return (string) $this->username;
+        return $this->email;
     }
 
-    public function setUsername(string $username): self
+    public function setEmail(string $email): self
     {
-        $l = mb_strlen($username);
+        $l = mb_strlen($email);
         if (!$l) {
             throw new InvalidArgumentException('username cannot be empty');
         }
-        $this->username = $username;
+        $this->email = $email;
         return $this;
+    }
+
+    /**
+     * A visual identifier that represents this user.
+     *
+     * @see UserInterface
+     */
+    public function getUsername(): string
+    {
+        return (string) $this->email;
     }
 
     /**
@@ -116,7 +138,7 @@ class Admin implements UserInterface
     {
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
-        $roles[] = 'ROLE_ADMIN';
+        $roles[] = 'ROLE_USER';
 
         return array_unique($roles);
     }
@@ -138,7 +160,7 @@ class Admin implements UserInterface
 
     /**
      * @param string $password
-     * @return Admin
+     * @return User
      */
     public function setPassword(string $password): self
     {
@@ -148,6 +170,12 @@ class Admin implements UserInterface
         }
         if ($l < static::MIN_PASSWORD_LENGTH) {
             throw new InvalidArgumentException('password too short, 8 characters needed');
+        }
+        $constraint = new Assert\NotCompromisedPassword();
+        $validator = static::$validator;
+        $errors = $validator->validate($password, $constraint);
+        if (sizeof($errors)) {
+            throw new InvalidArgumentException((string)$errors);
         }
         $encoded = static::$passwordEncoder->encodePassword(
             $this, $password);

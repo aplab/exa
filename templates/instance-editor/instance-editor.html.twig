@@ -27,7 +27,7 @@
             <div class="{{ prefix }}-arrow-right fas fa-caret-right"></div>
         </div>
         <div class="{{ prefix }}-body">
-            <form method="post" id="<?=$this->instance->instanceName?>-form">
+            <form method="post" id="{{ prefix }}-form">
                 {% for tab in instance_editor.tab %}
                 <div class="{{ prefix }}-panel">
                     {% if tab.ckeditor %}

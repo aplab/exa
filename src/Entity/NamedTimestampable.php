@@ -10,6 +10,7 @@ namespace App\Entity;
 
 use App\Component\ModuleMetadata as ModuleMetadata;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -30,7 +31,7 @@ class NamedTimestampable
 {
     /**
      * NamedTimestampable constructor.
-     * @throws \Exception
+     * @throws Exception
      */
     public function __construct()
     {
@@ -49,7 +50,7 @@ class NamedTimestampable
 
     /**
      * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Name should be not blank")
+     * @Assert\NotBlank()
      * @ModuleMetadata\Property(title="Name",
      *     cell={@ModuleMetadata\Cell(order=2000, width=320, type="Label")},
      *     widget={@ModuleMetadata\Widget(order=2000, tab="General", type="Text")})

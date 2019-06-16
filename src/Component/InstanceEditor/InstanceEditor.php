@@ -14,6 +14,7 @@ use App\Component\ModuleMetadata\ModuleMetadata;
 use App\Component\ModuleMetadata\ModuleMetadataRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Mapping\ClassMetadata;
+use Exception;
 use Psr\SimpleCache\InvalidArgumentException;
 use ReflectionException;
 use Symfony\Component\HttpFoundation\Request;
@@ -158,6 +159,7 @@ class InstanceEditor
 
     /**
      * @param Request $request
+     * @throws Exception
      */
     public function handleRequest(Request $request)
     {
@@ -184,6 +186,11 @@ class InstanceEditor
             if (method_exists($entity, $setter)) {
                 $entity->$setter($value);
             }
+        }
+        $validator = $this->instanceEditorManager->getValidatorInterface();
+        $constraint_violations = $validator->validate($entity);
+        if (sizeof($constraint_violations)) {
+            throw new Exception($constraint_violations);
         }
         $this->getEntityManagerInterface()->persist($entity);
         $this->getEntityManagerInterface()->flush();

@@ -26,6 +26,14 @@
                 "route": "fields_example_list"
             },
             {
+                "id": "user",
+                "name": "User",
+                "icon": "fas fa-users",
+                "disabled": false,
+                "target": "_self",
+                "route": "user_list"
+            },
+            {
                 "id": "admin",
                 "name": "Admin",
                 "icon": "fas fa-user-shield",

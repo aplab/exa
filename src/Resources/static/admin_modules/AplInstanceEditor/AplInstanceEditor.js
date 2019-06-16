@@ -64,7 +64,7 @@ function AplInstanceEditor(container) {
                 default_tabs_wrapper_scroll = s;
             }
         } catch (err) {
-            console.log(err)
+            //console.log(err)
         }
     };
 
@@ -366,7 +366,16 @@ function AplInstanceEditor(container) {
      * Save handler
      */
     this.save = function () {
-        body.children('form').eq(0).submit();
+        var form = body.children('form').eq(0);
+        var oform = form.get(0);
+        var data = new FormData(oform);
+
+        var entries = data.entries();
+        while ((next = entries.next()) && next.done === false) {
+            var pair = next.value;
+            //console.log(pair);
+        }
+        form.submit();
     };
 
     /**
