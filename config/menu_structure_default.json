@@ -7,7 +7,7 @@
                 "icon": "fas fa-home",
                 "disabled": false,
                 "target": "_self",
-                "route": "admin_desktop"
+                "route": "dashboard"
             },
             {
                 "id": "named-timestampable",
@@ -15,7 +15,7 @@
                 "icon": "fas fa-clock",
                 "disabled": false,
                 "target": "_self",
-                "route": "admin_named_timestampable_list"
+                "route": "named_timestampable_list"
             },
             {
                 "id": "fields-example",
@@ -23,15 +23,15 @@
                 "icon": "fas fa-flask",
                 "disabled": false,
                 "target": "_self",
-                "route": "admin_fields_example_list"
+                "route": "fields_example_list"
             },
             {
-                "id": "system-user",
+                "id": "admin",
                 "name": "Admin",
                 "icon": "fas fa-user-shield",
                 "disabled": false,
                 "target": "_self",
-                "route": "admin_system_user_list"
+                "route": "admin_list"
             },
             {
                 "name": "Files",
@@ -58,7 +58,7 @@
                         "icon": "fas fa-file-upload",
                         "disabled": false,
                         "target": "_self",
-                        "route": "admin_user_files_list"
+                        "route": "user_files_list"
                     }
                 ]
             },
@@ -72,7 +72,7 @@
                         "icon": "fas fa-box-open",
                         "disabled": false,
                         "target": "_self",
-                        "route": "admin_bind_container_list"
+                        "route": "bind_container_list"
                     },
                     {
                         "id": "contained",
@@ -80,7 +80,7 @@
                         "icon": "fas fa-boxes",
                         "disabled": false,
                         "target": "_self",
-                        "route": "admin_bind_contained_list"
+                        "route": "bind_contained_list"
                     }
                 ]
             },
@@ -90,7 +90,7 @@
                 "icon": "fas fa-tree",
                 "disabled": false,
                 "target": "_self",
-                "route": "admin_tree_list"
+                "route": "tree_list"
             },
             {
                 "id": "test",
@@ -99,7 +99,7 @@
                 "disabled": false,
                 "target": "_self",
                 "class": "additional-css-class",
-                "route": "admin_test"
+                "route": "test"
             }
         ]
     }

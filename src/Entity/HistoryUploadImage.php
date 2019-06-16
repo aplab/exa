@@ -7,7 +7,9 @@
  */
 
 namespace App\Entity;
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use JsonSerializable;
 
 /**
  * Class HistoryUploadImage
@@ -18,7 +20,7 @@ use Doctrine\ORM\Mapping as ORM;
  *      @ORM\Index(name="favorites", columns={"favorites"})
  *     })
  */
-class HistoryUploadImage implements \JsonSerializable
+class HistoryUploadImage implements JsonSerializable
 {
     /**
      * @ORM\Id()
@@ -76,7 +78,7 @@ class HistoryUploadImage implements \JsonSerializable
      */
     public function __construct()
     {
-        $this->createdAt = new \DateTime;
+        $this->createdAt = new DateTime;
         $this->favorites = 0;
     }
 

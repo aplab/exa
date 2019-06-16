@@ -24,7 +24,7 @@ use Throwable;
 /**
  * Class FileController
  * @package App\Controller
- * @Route("/xhr", name="admin_xhr_")
+ * @Route("/xhr", name="xhr_")
  */
 class XhrController extends AbstractController
 {

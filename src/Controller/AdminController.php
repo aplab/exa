@@ -16,7 +16,7 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 /**
  * Class NamedTimestampableController
  * @package App\Controller
- * @Route("/system-user", name="admin_system_user_")
+ * @Route("/admin", name="admin_")
  */
 class AdminController extends ReferenceController
 {

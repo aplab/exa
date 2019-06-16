@@ -18,7 +18,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class ExampleController
  * @package App\Controller
- * @Route("/", name="admin_")
+ * @Route("/", name="")
  */
 class ExampleController extends AbstractController
 {

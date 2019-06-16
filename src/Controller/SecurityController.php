@@ -23,7 +23,7 @@ class SecurityController extends AbstractController
             /** @noinspection PhpParamsInspection */
             $this->addFlash('error', 'already logged in');
             /** @noinspection PhpParamsInspection */
-            return $this->redirectToRoute('admin_desktop');
+            return $this->redirectToRoute('dashboard');
         }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();

@@ -15,7 +15,7 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class NamedTimestampableController
  * @package App\Controller
- * @Route("/bind-contained", name="admin_bind_contained_")
+ * @Route("/bind-contained", name="bind_contained_")
  */
 class BindContainedController extends ReferenceController
 {

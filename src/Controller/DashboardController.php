@@ -16,7 +16,6 @@ use Symfony\Component\Routing\Annotation\Route;
 /**
  * Class AdminController
  * @package App\Controller
- * @Route("", name="admin_")
  */
 class DashboardController extends AbstractController
 {
@@ -35,7 +34,7 @@ class DashboardController extends AbstractController
     }
 
     /**
-     * @Route("/", name="desktop")
+     * @Route("/", name="dashboard")
      * @return Response
      */
     public function desktop() {

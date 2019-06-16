@@ -200,7 +200,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
      */
     public function onAuthenticationSuccess(Request $request, TokenInterface $token, $providerKey)
     {
-        return new RedirectResponse($this->router->generate('admin_desktop'));
+        return new RedirectResponse($this->router->generate('dashboard'));
     }
 
 }
