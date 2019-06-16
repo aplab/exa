@@ -90,7 +90,7 @@ services:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    App\Controller\SystemUserController:
+    App\Controller\AdminController:
         tags: ['controller.service_arguments']
         calls:
             - method: setPasswordEncoder

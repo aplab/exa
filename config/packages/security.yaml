@@ -1,6 +1,6 @@
 security:
     encoders:
-        App\Entity\SystemUser:
+        App\Entity\Admin:
             algorithm: auto
 
 
@@ -9,7 +9,7 @@ security:
         # used to reload user from session & other features (e.g. switch_user)
         app_user_provider:
             entity:
-                class: App\Entity\SystemUser
+                class: App\Entity\Admin
                 property: username
 
     firewalls:
@@ -22,7 +22,7 @@ security:
             anonymous: ~
             guard:
                 authenticators:
-                    - App\Security\SystemUserAuthenticator
+                    - App\Security\AdminAuthenticator
             logout:
                 path: /logout
                 target: /login

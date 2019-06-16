@@ -16,7 +16,7 @@ use App\Component\ModuleMetadata as ModuleMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * Class SystemUser
+ * Class Admin
  * @package App\Entity
  * @ORM\Entity
  * @ORM\Table(name="system_user")
@@ -29,7 +29,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "Additional": 10000418
  *     })
  */
-class SystemUser implements UserInterface
+class Admin implements UserInterface
 {
     /**
      * @var string
@@ -131,7 +131,7 @@ class SystemUser implements UserInterface
 
     /**
      * @param string $username
-     * @return SystemUser
+     * @return Admin
      */
     public function setUsername($username)
     {

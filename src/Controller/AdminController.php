@@ -9,7 +9,7 @@
 namespace App\Controller;
 
 
-use App\Entity\SystemUser;
+use App\Entity\Admin;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
@@ -18,12 +18,12 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
  * @package App\Controller
  * @Route("/system-user", name="admin_system_user_")
  */
-class SystemUserController extends ReferenceController
+class AdminController extends ReferenceController
 {
     /**
      * @var string
      */
-    protected $entityClassName = SystemUser::class;
+    protected $entityClassName = Admin::class;
 
     public function setPasswordEncoder(UserPasswordEncoderInterface $passwordEncoder)
     {

@@ -11,7 +11,7 @@ use App\Component\ModuleMetadata as ModuleMetadata;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\SystemUserRepository")
+ * @ORM\Entity(repositoryClass="App\Repository\AdminRepository")
  * @UniqueEntity(fields={"username"}, message="It looks like your already have an account!")
  * @ModuleMetadata\Module(
  *     title="System user",
@@ -21,7 +21,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  *          "Additional": 10000418
  *     })
  */
-class SystemUser implements UserInterface
+class Admin implements UserInterface
 {
     /**
      * @var int
@@ -138,7 +138,7 @@ class SystemUser implements UserInterface
 
     /**
      * @param string $password
-     * @return SystemUser
+     * @return Admin
      */
     public function setPassword(string $password): self
     {

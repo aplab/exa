@@ -9,7 +9,7 @@
 namespace App\Security;
 
 
-use App\Entity\SystemUser;
+use App\Entity\Admin;
 use App\Form\LoginForm;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
@@ -153,7 +153,7 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
             throw new InvalidCsrfTokenException;
         }
         $username = $credentials['_username'];
-        return $this->entityManager->getRepository(SystemUser::class)->findOneBy([
+        return $this->entityManager->getRepository(Admin::class)->findOneBy([
             'username' => $username
         ]);
     }

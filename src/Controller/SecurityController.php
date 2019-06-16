@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use App\Entity\SystemUser;
+use App\Entity\Admin;
 use Exception;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -19,7 +19,7 @@ class SecurityController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
         $user = $this->getUser();
-        if ($user instanceof SystemUser) {
+        if ($user instanceof Admin) {
             /** @noinspection PhpParamsInspection */
             $this->addFlash('error', 'already logged in');
             /** @noinspection PhpParamsInspection */
